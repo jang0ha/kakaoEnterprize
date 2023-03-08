@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  @@include('@@webRoot/html/_include/_head.html')
+  <style>
+    body {
+      background: #fff;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    section {
+      border-bottom: 1px solid #e8e8e8;
+      padding: 1.5rem 0;
+      flex: 0 0 50%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #df1f1f;
+    }
+
+    .gap-10px {
+      gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+  </div>
+  <script>
+    const swiper = new Swiper('.swiper', {
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+@use '../abstract/mixins' ;
+
+.key-button{
+  @include mixins.hstack(1rem);
+}
