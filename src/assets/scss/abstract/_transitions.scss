@@ -1,0 +1,48 @@
+/*transition*/
+// https://gist.github.com/tobiasahlin/7a421fb9306a4f518aab
+
+// Usage:   @include transition(width, height 0.3s ease-in-out);
+// Output:  -webkit-transition(width 0.2s, height 0.3s ease-in-out);
+//          transition(width 0.2s, height 0.3s ease-in-out);
+//
+// Pass in any number of transitions
+
+// 사용법: @include transition(너비, 높이 0.3s ease-in-out);
+// 출력: -webkit-transition(너비 0.2s, 높이 0.3s ease-in-out);
+//           전환(너비 0.2s, 높이 0.3s ease-in-out);
+//
+// 원하는 수의 전환을 전달합니다.
+
+ 
+@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
+  @each $transition in $transitions {
+    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+  }
+  
+  -webkit-transition: $unfoldedTransitions;
+  transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+  // Default values
+  $property: all;
+  $duration: .2s;
+  $easing: null; // Browser default is ease, which is what we want
+  $delay: null; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i)
+    } @else {
+      $p: nth($defaultProperties, $i)
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}

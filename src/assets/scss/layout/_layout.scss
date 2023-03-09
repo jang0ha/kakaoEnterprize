@@ -1,24 +1,24 @@
-html{
-  font-size: 0.0625em;
-  height: 100%;
-}
+// html{
+//   font-size: 0.0625em;
+//   height: 100%;
+// }
 
 
 
-body{
-  display: flex;flex-direction: column;min-height: 100vh;
-  .open-allmenu &{
-    overflow: hidden;height: 100%;width: 100%;
-  }
-}
+// body{
+//   display: flex;flex-direction: column;min-height: 100vh;
+//   .open-allmenu &{
+//     overflow: hidden;height: 100%;width: 100%;
+//   }
+// }
 
-main{
-  flex-grow: 1;
-  transition: padding 0.3s;
-  padding-bottom: 200px;
-}
+// main{
+//   flex-grow: 1;
+//   transition: padding 0.3s;
+//   padding-bottom: 200px;
+// }
 
-.container{
-  max-width: 1240px;
-  padding: 0 20px;
-}
+// .container{
+//   max-width: 1240px;
+//   padding: 0 20px;
+// }
