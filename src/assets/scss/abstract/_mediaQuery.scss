@@ -1,0 +1,29 @@
+/* 미디어 쿼리 */
+
+//breakpoint
+
+
+$mobile: 769px; //사용
+$tablet: 997px; //사용
+$laptop: 1440px; //사용
+
+// Mobile 분기점 769이상일때
+@mixin res--mobile-up {
+  @media (min-width: #{$mobile}) {
+    @content;
+  }
+}
+
+// Tablet 분기점 997px이상일때
+@mixin res--tablet-up {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+// laptop 분기점 1440이상일때
+@mixin res--laptop-up {
+  @media (min-width: #{$laptop}) {
+    @content;
+  }
+}

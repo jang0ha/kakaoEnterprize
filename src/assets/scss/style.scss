@@ -1,6 +1,9 @@
-@use 'base' as *;
-@use 'abstract' as *;
-@use 'components' as *;
+@use 'vendors';
+
+
+@use 'base';
+@use 'abstract';
+@use 'components';
 
 
 @use 'layout';

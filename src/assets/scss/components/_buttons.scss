@@ -1,79 +1,104 @@
-@use '../abstract/mixins' as *;
-@use '../abstract/functions' as *;
-@use '../abstract/variables' as *;
+@use '../abstract/mixins'as *;
+@use '../abstract/functions'as *;
+@use '../abstract/variables'as *;
+
+
 $key-name-icon-map:(outlink, chevron);
 $_hover-color:111;
-.key-button{
-  @include hstack(1rem);
-  
-  font : {
-    size:rem(15);
-    weight:400;
-    line-height: 1;
-  }
+
+@each $key-name in $key-name-icon-map {
+  .key-button {
+    @include hstack(8);
+    position: relative;
+
+    font : {
+      size: rem(15);
+      weight: 400;
+    }
+
+    span{
+      line-height: 1;
+    }
+
     //키아이콘
-    @each $key-name in $key-name-icon-map{
-      .icon--key__#{$key-name}{
-        display: inline-block;
-        width: rem(22);
-        height: rem(22);
-        background: $light-gray;
-        border-radius: 50%;
-        background: #edeeee;
-        overflow: hidden;
-        transition: background cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s;
-        &::before, &::after{
-          content: '';
-          display: block;
-          width: rem(10);
-          height: rem(10);
-          background-image: key-btn(#{$key-name});
-          background-position: center;
-          background-repeat: no-repeat;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          margin: -5px 0 0 -5px;
-          transition: transform .4s, -webkit-transform .4s;
-        }
-        &::before{
-          transform: translateY(0);
-        }
+
+    .icon--key__#{$key-name} {
+      display: inline-block;
+      width: rem(22);
+      height: rem(22);
+      background: $primary;
+      border-radius: 50%;
+      overflow: hidden;
+      transition: background cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s;
+      position: relative;
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        width: rem(10);
+        height: rem(10);
+        background-image: key-btn(#{$key-name});
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        // margin: -5px 0 0 -5px;
+        margin: rem(-5) 0 0 rem(-5);
+        transition: transform .4s, -webkit-transform .4s;
+      }
+
+      &::before {
+        transform: translateY(0);
+      }
+
+      &::after {
+        background-image: key-btn(#{$key-name}, #{$_hover-color});
+      }
+
+
+
+      @if $key-name==outlink {
         &::after{
-          background-image: key-btn(#{$key-name}, #{$_hover-color});
+          transform: translate3d(rem(-22), rem(22), 0);
+
         }
-        @if $key-name == outlink {
-          &::after{
-            transform: translate3d(rem(-22),rem(22), 0);
-          }
-        }
-        @if $key-name == chevron {
-          &::after{
-            transform: translateX(rem(-22));
-          }
-        }
-        .desktop &{
-          &:hover{
-            @if $key-name == outlink {
-              &::before{
-                transform: translate3d(rem(22), rem(-22), 0);
-              }
-              &::after{
-                transform: translateY(0);
-              }
-            }
-            @if $key-name == chevron {
-              &::before{
-                transform: translateX(rem(21));
-              }
-              &::after{
-                transform: translateX(rem(1));
-              }
-            }
-          }
+      }
+
+      @if $key-name==chevron {
+        &::after {
+          transform: translateX(rem(-22));
         }
       }
     }
-    
-}
 
+    .desktop & {
+      &:hover {
+
+        .icon--key__#{$key-name} {
+          background-color: $primary;
+          @if $key-name==outlink {
+            &::before {
+              transform: translate3d(rem(22), rem(-22), 0);
+            }
+
+            &::after {
+              transform: translateY(0);
+            }
+          }
+
+          @if $key-name==chevron {
+            &::before {
+              transform: translateX((rem(22)));
+            }
+
+            &::after {
+              transform: translateX(rem(0));
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

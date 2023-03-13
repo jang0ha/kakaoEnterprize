@@ -1,15 +1,23 @@
-@mixin hstack($gap){
-  display: flex;
+@use 'functions' as func;
+
+/*믹스인*/
+
+
+@mixin hstack($gap:null){
+  display: inline-flex;
   align-items: center;
-  gap: $gap;
+  // gap: #{calc($gap)}rem;
+  gap : #{$gap}rem;
+  // gap : func.rem($gap);
 }
 
 
 @mixin vstack($gap){
-  display: flex;
+  display: inline-flex;
   align-items: center;
   flex-direction: column;
-  gap: $gap;
+  gap : #{$gap}rem;
 }
+
 
 

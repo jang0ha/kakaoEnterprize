@@ -1,12 +1,18 @@
+@use 'functions' as *;
+
 $primary: #ffe100;
 $light-yellow: #FFF5CD;
-$dark: #191919;
+$dark-gray: #333;
+$light-gray:#f8f8f8;
 $gray: #666;
 $border-color:#E6E6E6;
-$light-gray:#f8f8f8;
+
+
 $blue:#0050FF;
 $danger:#E8423F;
+$white: #fff;
+$black: #191919;
 
-$header-height: 80px;
-$header-height-lg: 88px;
+$header-height: rem(72);
+$header-height-lg: rem(80);
 

@@ -1,4 +1,5 @@
-@forward '../abstract/variables';
-@forward '../abstract/functions';
-@forward '../abstract/mixins';
-@forward '../abstract/helpers';
+@forward 'variables';
+@forward 'functions';
+@forward 'mixins';
+@forward 'helpers';
+@forward 'mediaQuery';
