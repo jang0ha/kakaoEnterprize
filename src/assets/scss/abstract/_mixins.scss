@@ -1,4 +1,3 @@
-@use 'functions' as func;
 
 /*믹스인*/
 
@@ -21,3 +20,10 @@
 
 
 
+// 이미지 백그라운드 경로
+$path-image : '../images/';
+@mixin bg-url($imageName, $type: "svg") {
+  background-image: url("#{$path-image}#{$imageName}.#{$type}");
+  background-repeat: no-repeat;
+	background-position: center;
+}

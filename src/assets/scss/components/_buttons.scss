@@ -26,7 +26,7 @@ $_hover-color:111;
       display: inline-block;
       width: rem(22);
       height: rem(22);
-      background: $primary;
+      background: $light-gray;
       border-radius: 50%;
       overflow: hidden;
       transition: background cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s;
@@ -72,9 +72,9 @@ $_hover-color:111;
       }
     }
 
-    .desktop & {
+    .pc & {
       &:hover {
-
+      
         .icon--key__#{$key-name} {
           background-color: $primary;
           @if $key-name==outlink {
@@ -98,6 +98,30 @@ $_hover-color:111;
           }
         }
 
+      }
+    }
+    .mobile & {
+      .icon--key__#{$key-name} {
+        background: $primary;
+        @if $key-name==outlink {
+          &::before {
+            transform: translate3d(rem(22), rem(-22), 0);
+          }
+
+          &::after {
+            transform: translateY(0);
+          }
+        }
+
+        @if $key-name==chevron {
+          &::before {
+            transform: translateX((rem(22)));
+          }
+
+          &::after {
+            transform: translate(rem(0.52), rem(-0.4));
+          }
+        }
       }
     }
   }

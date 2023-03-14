@@ -1,29 +1,36 @@
 @use 'abstract'as *;
 
 
+
 .header {
   position: sticky;
   border-bottom: 1rem solid $border-color;
-  height: 72rem;
+  height: $header-height;
   z-index: 1030;
   display: block;
+  max-width: none;
+  padding: 0;
+  width: 100%;
 
   .inner {
     @include hstack(0);
     font-size: rem(15);
     justify-content: space-between;
+    max-width: none;
 
   }
 
-  @include res--mobile-up{
+  @include res--mobile-up {
     height: $header-height;
-    .inner{
-    }
+
+    .inner {}
   }
 
-  .open-menu &{
-     background-color: $black;
-     border-color: $black;
+  @include res--laptop-up {}
+
+  .open-menu & {
+    background-color: $black;
+    border-color: $black;
   }
 }
 
@@ -32,9 +39,10 @@
   justify-content: space-between;
   width: 26px;
   height: 21px;
-  padding: 20px;
+  padding: 20px 10px;
   box-sizing: content-box;
   position: relative;
+  margin-right: -10px;
   span {
     position: relative;
     width: 24px;
@@ -49,6 +57,7 @@
     span {
       position: absolute;
       background-color: $white;
+
       &:nth-child(1) {
         transform: translate(0px, 7.9104px) rotate(45deg);
       }
@@ -71,10 +80,14 @@
 }
 
 .logo-area {
-  padding-left: rem(10);
-  @include res--mobile-up {
-    flex: 1;
-    padding:0
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+
+  @include res--tablet-up {
+    padding: 0
   }
 
   @include res--laptop-up {
@@ -109,19 +122,21 @@
         display: inline-block;
         vertical-align: middle;
         transform: translateY(-0.5rem);
-        transition: all 0.3s;
       }
     }
   }
-  .open-menu &{
-    svg{
-      path{
+
+  .open-menu & {
+    svg {
+      path {
         fill: $white;
       }
     }
-    span{
-      color:$white;
-      &::before{
+
+    span {
+      color: $white;
+
+      &::before {
         background-color: $white;
       }
     }
@@ -132,9 +147,9 @@
 .gnb {
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s;
   display: none;
-  .open-menu &{
+
+  .open-menu & {
     background-color: $black;
     position: fixed;
     top: $header-height;
@@ -145,31 +160,38 @@
     opacity: 1;
     visibility: visible;
     display: block;
-    *{
+
+    * {
       font : {
-        size:rem(18);
+        size: rem(18);
         weight: bold;
       }
-     
+
     }
+
     .key-button {
       height: rem(20);
-      i{
+
+      i {
         width: rem(22);
         height: rem(22);
       }
     }
-    .dep1{
-      padding:rem(10) rem(20);
-      li{
+
+    .dep1 {
+      padding: rem(10) rem(20);
+
+      li {
         padding: rem(30) 0;
-        a{
-          color:$white;
+
+        a {
+          color: $white;
         }
-       
+
       }
-      li + li{
-        border-top:1rem solid $dark-gray;
+
+      li+li {
+        border-top: 1rem solid $dark-gray;
       }
     }
   }
@@ -179,15 +201,7 @@
     opacity: 1;
     visibility: visible;
     display: block;
-  }
-  @include res--laptop-up {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 
-  @include res--mobile-up {
-  
     .dep1 {
       @include hstack(20);
 
@@ -199,9 +213,89 @@
     }
   }
 
-
+  @include res--laptop-up {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
   .dep2 {
     display: none;
+  }
+}
+
+// 공지배너
+.banner-wrap {
+  background-color: #F1F9FF;
+  width: 100%;
+
+  .banner-area {
+    @include hstack(10);
+    justify-content: space-between;
+    padding:rem(10) 0;
+    width: 100%;
+
+    i {
+      flex: none;
+      transform: translateY(-0.5rem);
+    }
+
+    .title {
+      flex: 1 0 0%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 700;
+      font-size: rem(12);
+      color: $black;
+    }
+
+    .more {
+      width: 22rem;
+      height: 22rem;
+    
+      &:hover {
+        text-decoration: underline;
+        color: $blue;
+      }
+
+      i{
+        display: block;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+
+  @include res--tablet-up {
+    .inner {
+      max-width: none;
+    }
+
+    .banner-area {
+      .title {
+        font-size: rem(12);
+      }
+
+      .more {
+        text-decoration: none;
+        width: auto;
+        flex: none;
+        display: block;
+        text-decoration: none;
+        i{
+          display: none;
+        }
+  
+        p {
+          display: block;
+          font-weight: 400;
+          font-size: rem(12);
+          color: $blue;
+        }
+      }
+
+    }
   }
 }

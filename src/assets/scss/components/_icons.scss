@@ -1,73 +1,13 @@
-@use '../abstract/functions' as *;
-@use '../abstract/variables' as *;
+@use '../abstract/mixins' as mix;
 
-// $key-name-icon-map:(outlink, chevron);
-// $_hover-color:111;
-// .icon{
-//   //키아이콘
-//   @each $key-name in $key-name-icon-map{
-//     &--key__#{$key-name}{
-//       display: inline-block;
-//       width: rem(22);
-//       height: rem(22);
-//       position: relative;
-//       border-radius: 50%;
-//       background: #edeeee;
-//       overflow: hidden;
-//       transition: background cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s;
-//       &::before, &::after{
-//         content: '';
-//         display: block;
-//         width: rem(10);
-//         height: rem(10);
-//         background-image: key-btn(#{$key-name});
-//         background-position: center;
-//         background-repeat: no-repeat;
-//         position: absolute;
-//         top: 50%;
-//         left: 50%;
-//         margin: -5px 0 0 -5px;
-//         transition: transform .4s, -webkit-transform .4s;
-//       }
-//       &::before{
-//         transform: translateY(0);
-//       }
-//       &::after{
-//         background-image: key-btn(#{$key-name}, #{$_hover-color});
-//       }
-//       @if $key-name == outlink {
-//         &::after{
-//           transform: translate3d(rem(-22),rem(22), 0);
-//         }
-//         .key-button &{
-//           &:hover{
-//             &::before{
-//               transform: translate3d(rem(22), rem(-22), 0);
-//             }
-//             &::after{
-//               transform: translateY(0);
-//             }
-//           }
-//         }
-//       }
-//       @if $key-name == chevron {
-//         &::after{
-//           transform: translateX(rem(-22));
-//         }
-//         .key-button &{
-//           &:hover{
-//               background:$primary;
-//             &::before{
-//               transform: translateX(rem(21));
-//             }
-//             &::after{
-//               transform: translateX(rem(1));
-//             }
-//           }
-//         }
-      
-//       }
-//     }
-//   }
-// }
-
+$images : alarm, asdf;
+.icon{
+  @each $value in $images{
+    &-#{$value}{
+      //각 스프라이트 이미지 삽임
+      @include mix.bg-url ("icon-#{$value}");
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+}
