@@ -1,0 +1,194 @@
+@use '../abstract/'as *;
+
+
+// 검색창(젠데스크 커스텀)
+.search{
+  @include hstack(10);
+  border: 0;
+  width: 100%;
+  input[type=search]{
+    padding:rem(0) rem(0) rem(0) rem(14);
+    // padding:rem(0.75) rem(20);
+  }
+  .clear-button{
+    padding:0;
+    background-color: $middle-gray;
+    width: rem(28);
+    height: rem(28);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    &:hover, &:focus{
+      background-color: $primary;
+      outline: 0;
+      border: 0;
+      box-shadow: none;
+    }
+    i{
+      width: rem(12);
+      height: rem(12);
+    }
+  }
+  .filled & {
+    .clear-button{
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  @include res--mobile-up{
+    input[type=search]{
+      padding:rem(0) rem(0) rem(0) rem(14);
+    }
+  }
+}
+
+.search-area{
+  @include hstack(10);
+  flex: 1;
+}
+.search-helper{
+  width: 100%;
+  padding: rem(15);
+  background:$white;
+  z-index: 1030;
+  transition: all 0.3s;
+  overflow-y: auto;
+  position: fixed;
+  top:calc($header-height + $search-height-lg + rem(20));
+  left: 0;
+  height: calc(100vh - calc($header-height + $search-height-lg + rem(20)));
+  display: none;
+  li{
+    padding:rem(15);
+    &+li{
+      margin-top: rem(5);
+    }
+    &:hover{
+      background-color: $light-gray;
+    }
+  }
+
+  .filled & {
+    .search-recommend{
+      opacity: 0;
+      visibility: hidden;
+    }
+    .search-result{
+      opacity: 1;
+      visibility: visible;
+      display: block;
+    }
+  }    
+  .searching &{
+  display: block;
+  }
+
+  @include res--mobile-up{
+
+    position: absolute;
+    top: rem(65);
+    height: auto;
+    border: 1px solid $border-color;
+    box-shadow: $box-shadow-lg;
+    border-radius: $border-radius;
+    max-height: rem(300);
+  }
+
+}
+.search-recommend{
+  .search-faq {
+    @include hstack(10);
+    align-items: flex-start;
+    .search-faq-title{
+      white-space: pre-line;
+      word-break: break-all;
+    }
+    .search-button {
+      width: rem(24);
+      height: rem(24);
+      flex: none;
+      i {
+        width: rem(12);
+        height: rem(12);
+      }
+    }
+    .search-faq-nav{
+      margin-top: rem(5);
+      font : {
+        size: rem(14);
+      }
+    }
+  }
+}
+
+
+.search-result{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding:rem(15);
+  display: none;
+  h5{
+    margin-bottom: rem(10);
+    color:$dark-gray;
+  }
+  
+}
+
+.search-wrap {
+  width: 100%;
+  margin: rem(60) auto auto auto;
+  border: 0;
+
+  .search-inner {
+    @include vstack(10);
+    width: 100%;
+  }
+
+  .searching &{
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    background: $white;
+    padding: rem(10) rem(20);
+    margin:0;
+    height: calc(100vh - $header-height);
+  }
+  @include res--mobile-up {
+    width: 80%;
+    
+    position: relative;
+    border: 1px solid $black;
+    border-radius: $border-radius-lg;
+
+    .search-inner {
+      flex-direction: row;
+      width: 100%;
+      padding: rem(10) rem(15);
+    }
+
+    .searching &{
+      margin: rem(60) auto auto auto;
+      position: relative;
+      height: auto;
+      padding:0;
+      top: auto;
+    }
+  }
+}
+
+.search-container{
+  @include hstack(10);
+  width: 100%;
+  border:1px solid $dark-gray;
+  border-radius: $border-radius-lg;
+  padding: rem(5) rem(10);
+  height: $search-height-lg;
+
+  @include res--mobile-up{
+    flex:1;
+    border: 0;
+    position: relative;
+    height: $search-height;
+  }
+}

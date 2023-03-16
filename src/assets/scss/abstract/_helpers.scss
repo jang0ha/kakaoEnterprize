@@ -1,10 +1,10 @@
 @use 'mediaQuery' as *;
 @use 'functions' as *;
 
-
-
-
 /*공통 스타일*/
+
+
+
 .visually-hidden{
   position: absolute !important;
   width: 1rem !important;
@@ -28,4 +28,16 @@
     margin: auto;
   }
 
+}
+
+
+.d-md-none{
+  @include res--mobile-up{
+    display: none;
+  }
+}
+
+
+.section{
+  margin-top: rem(100);
 }

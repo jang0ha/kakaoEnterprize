@@ -1,11 +1,51 @@
 @use '../abstract/mixins' as mix;
 
-$images : alarm, asdf;
+$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, yes, no, onebyone, web-chat, member, non-membern, phone, arrow-right, history-back;
 .icon{
+
   @each $value in $images{
+    //기본아이콘
     &-#{$value}{
-      //각 스프라이트 이미지 삽임
       @include mix.bg-url ("icon-#{$value}");
+      width: 24rem;
+      height: 24rem;
+    }
+    //타이틀 아이콘
+    &-title-#{$value}{
+      @include mix.bg-url ("icon-title-#{$value}");
+      width: 48rem;
+      height: 48rem;
+    }
+
+    //페이지네이션 아이콘
+    &-pagination-#{$value}{
+      @include mix.bg-url ("icon-pagination-#{$value}");
+      width: 22rem;
+      height: 22rem;
+    }
+
+    //평가 아이콘
+    &-evaluation-#{$value}{
+      @include mix.bg-url ("icon-evaluation-#{$value}");
+      width: 24rem;
+      height: 24rem;
+    }
+
+    //문의하기 아이콘
+    &-request-#{$value}{
+      @include mix.bg-url ("icon-request-#{$value}");
+      width: 80rem;
+      height: 80rem;
+    }
+
+    &-arrow-#{$value}{
+      @include mix.bg-url ("icon-arrow-#{$value}");
+      width: 20rem;
+      height: 20rem;
+    }
+
+    &-arrow-#{$value}{
+      @include mix.bg-url ("icon-arrow-#{$value}");
       width: 20rem;
       height: 20rem;
     }

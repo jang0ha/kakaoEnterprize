@@ -40,6 +40,7 @@ $_default-color:555;
   $key-icon-list :(
     outlink:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10' d='M4.1,2.5h5.4v5.3'%3E%3C/path%3E%3Cpath fill='none' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10' d='M8.9,3.2L2.2,9.8'%3E%3C/path%3E%3C/svg%3E",
     chevron:"%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 11L6 5.93671L1 1' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10'%3E%3C/path%3E%3C/svg%3E",
+    arrow-right:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='5' height='10' viewBox='0 0 5 10' fill='none'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.462363 1.12838C0.257337 1.3334 0.257338 1.66582 0.462363 1.87084L3.59113 4.99961L0.462363 8.12838C0.257338 8.3334 0.257338 8.66581 0.462363 8.87084C0.667389 9.07587 0.9998 9.07587 1.20483 8.87084L4.70482 5.37084C4.90985 5.16581 4.90985 4.8334 4.70482 4.62838L1.20482 1.12838C0.999799 0.923353 0.667388 0.923353 0.462363 1.12838Z' fill='%23#{$color}'/%3E%3C/svg%3E"
   );
   $key-icon: map-get($key-icon-list, $key-icon-name);
   @return url("data:image/svg+xml;charset=utf8,#{$key-icon}");

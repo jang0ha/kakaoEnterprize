@@ -1,8 +1,9 @@
-@use 'functions' as *;
+@use 'functions'as *;
 
 $primary: #ffe100;
 $light-yellow: #FFF5CD;
 $dark-gray: #333;
+$middle-gray:#edeeee;
 $light-gray:#f8f8f8;
 $gray: #666;
 $border-color:#E6E6E6;
@@ -15,4 +16,11 @@ $black: #191919;
 
 $header-height: rem(60);
 $header-height-lg: rem(80);
+$search-height: rem(50);
+$search-height-lg: rem(56);
 
+
+$box-shadow : 0 0.5rem 11rem 0px rgb(0 0 0 / 9%) !important;
+$box-shadow-lg :0px 10px 30px rgba(0, 0, 0, 0.1) !important;
+$border-radius: rem(10);
+$border-radius-lg: rem(50);

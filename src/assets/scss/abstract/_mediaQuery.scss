@@ -3,25 +3,31 @@
 //breakpoint
 
 
-$mobile: 769px; //사용
-$tablet: 997px; //사용
-$laptop: 1196px; //사용
+$mobile: 768px; //사용
+$tablet: 992px; //사용
+$laptop: 1197px; //사용
 
-// Mobile 분기점 769이상일때
+// Mobile 분기점 768이상일때
 @mixin res--mobile-up {
   @media (min-width: #{$mobile}) {
     @content;
   }
 }
+// // Mobile 분기점 768이히일때
+// @mixin res--mobile-down {
+//   @media (max-width: #{$mobile}) {
+//     @content;
+//   }
+// }
 
-// Tablet 분기점 997px이상일때
+// Tablet 분기점 992px이상일때
 @mixin res--tablet-up {
   @media (min-width: #{$tablet}) {
     @content;
   }
 }
 
-// laptop 분기점 1440이상일때
+// laptop 분기점 1196이상일때
 @mixin res--laptop-up {
   @media (min-width: #{$laptop}) {
     @content;

@@ -1,0 +1,26 @@
+@use '../abstract/functions' as * ;
+@use '../abstract/variables' as * ;
+
+/*브래드크럼브*/
+
+.breadcrumbs{
+  span{
+    position: relative;
+    color:$dark-gray;
+    &+ span{
+      margin-left: rem(16);
+      &::before{
+        content: "";
+        position: absolute;
+        left: -50%;
+        top: 55%;
+        transform: translate(50%, -50%);
+        width: rem(5);
+        height: rem(10);
+        background-image: key-btn(arrow-right, 333);
+        background-size: contain;
+      }
+    }
+  }
+
+}

@@ -74,17 +74,124 @@ var Menu = {
      }
     })
    }
-  
 }
 
 
+var Select = {
+  init: function () {
+    this.append();
+  },
+
+  append: function () {
+    $(".hidden-select").each(function () {
+      $(this).hide();
+      var $select = $(this);
+      var _id = $(this).attr("id");
+
+      console.log(_id);
+      var wrapper = document.createElement("div");
+      wrapper.setAttribute("class", "custom-select custom-select__" + _id);
+  
+      var input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.setAttribute("class", "custom-select-input");
+      input.setAttribute("id", "custom-select__" + _id);
+      input.setAttribute("readonly", "readonly");
+      input.setAttribute(
+        "placeholder",
+        $(this)[0].options[$(this)[0].selectedIndex].innerText
+      );
+  
+      $(this).before(wrapper);
+      var $custom = $(".custom-select__" + _id);
+      $custom.append(input);
+      $custom.append("<div class='custom-options custom-options-" + _id + "'></div>");
+      var $custom_input = $("#custom-select__" + _id);
+      var $ops_list = $(".custom-options-" + _id);
+      var $ops = $(this)[0].options;
+      for (var i = 0; i < $ops.length; i++) {
+        $ops_list.append(
+          "<div data-value='" +
+            $ops[i].value +
+            "'>" +
+            $ops[i].innerText +
+            "</div>"
+        );
+      }
+  
+      $custom_input.click(function () {
+        $custom.toggleClass("active");
+      });
+      $custom_input.blur(function () {
+        $custom.removeClass("active");
+      });
+      $ops_list.find("div").click(function () {
+        $select.val($(this).data("value")).trigger("change");
+        $custom_input.val($(this).text());
+        $custom.removeClass("active");
+      });
+    });
+  }
+
+}
+
+var Search = {
+  searchInputEl: document.querySelector(".search input[type=search]"),
+  searchHelperEl: document.querySelector(".search-helper"),
+  searchFormEl: document.querySelector('.search'),
+  searchDeleteEl: document.querySelector('.clear-button'),
+  searchAreaEl: document.querySelector('.search-area'),
+  init: function () {
+    this.click();
+    this.blur();
+    this.filled();
+    this.delete();
+  },
+  click: function () {
+    Search.searchFormEl.addEventListener("click", () => {
+
+      html.classList.add('searching');
+    })
+  },
+  blur: function () {
+    Search.searchInputEl.addEventListener("blur", (event) => {
+      event.stopPropagation();
+      html.classList.remove('searching');
+    })
+ 
+  },
+  filled: function () {
+    // 삭제버튼 노출
+    Search.searchInputEl.addEventListener("keyup", function (evnet) {
+      let searchArea = this.closest(".search-area");
+      if (this.value.length > 0) {
+        searchArea.classList.add("filled");
+      } else {
+        searchArea.classList.remove("filled");
+      }
+    });
+  },
+  delete: function () {
+    Search.searchDeleteEl.addEventListener("click", function (event) {
+      event.stopPropagation();
+      Search.searchInputEl.value = '';// 인풋값 초기화
+      setTimeout(function () {
+        html.classList.remove('searching');
+        Search.searchAreaEl.classList.remove('filled');
+       },50)
+    })
+  }
+}
+
 
 Menu.init();
-
+Select.init();
+Search.init();
 
 // --------------------------------------------------------
 // 함수 형태로 형태로 만들기
 // --------------------------------------------------------
+
 
 
 function playScroll() {
@@ -108,7 +215,14 @@ function deviceWidth() {
     }
    }
 }
-// body.classList.add('pc');
+function CheckValueLengh() {
+  let inputs = [...document.querySelectorAll("input[type=search]")];
+  if( inputs.value.length > 0 ) {
+    this.nextElementSibling.classList.add("filled");
+      return false;
+  }
+  
+}
 
 window.addEventListener("resize", () => {
   deviceWidth()
@@ -117,6 +231,12 @@ window.addEventListener("resize", () => {
 document.addEventListener('DOMContentLoaded', function () {
   deviceWidth();
 });
+// 화면 전체를 클릭했을 때 메뉴가 사라짐.
+window.addEventListener("click", () => {
+
+});
+
+
 
 // PC, MOBILE 구별
 function deviceCheck() {

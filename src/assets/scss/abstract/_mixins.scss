@@ -1,21 +1,30 @@
 
 /*믹스인*/
 
-
+// 플렉스 / 가로
 @mixin hstack($gap:null){
   display: inline-flex;
   align-items: center;
   // gap: #{calc($gap)}rem;
-  gap : #{$gap}rem;
-  // gap : func.rem($gap);
+  @if($gap == null ){
+    gap:inherit;
+  }
+  @else{
+    gap : #{$gap}rem;
+  }
 }
 
-
-@mixin vstack($gap){
+// 플렉스/세로
+@mixin vstack($gap:null){
   display: inline-flex;
   align-items: center;
   flex-direction: column;
-  gap : #{$gap}rem;
+  @if($gap == null ){
+    gap:inherit;
+  }
+  @else{
+    gap : #{$gap}rem;
+  }
 }
 
 
@@ -26,4 +35,26 @@ $path-image : '../images/';
   background-image: url("#{$path-image}#{$imageName}.#{$type}");
   background-repeat: no-repeat;
 	background-position: center;
+	background-size: contain;
+  display: inline-block;
+}
+
+
+
+//말줄임
+// 글자 줄임 표시
+@mixin ellipsis($lines: 1) {
+  @if ($lines==1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @else {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  }
 }

@@ -126,3 +126,20 @@ $_hover-color:111;
     }
   }
 }
+
+
+.search-button{
+  @include hstack(null);
+  justify-content: center;
+  width:rem(40);
+  height:rem(40);
+  background-color: $middle-gray;
+  border-radius: $border-radius-lg;
+  &:hover,  &.active{
+    background-color: $primary;
+  }
+  i{
+    width: rem(20);
+    height: rem(20);
+  }
+}
