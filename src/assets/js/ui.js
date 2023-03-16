@@ -148,15 +148,19 @@ var Search = {
     this.delete();
   },
   click: function () {
-    Search.searchFormEl.addEventListener("click", () => {
-
+    Search.searchInputEl.addEventListener("click", (evnet) => {
+      event.stopPropagation();
       html.classList.add('searching');
     })
   },
   blur: function () {
-    Search.searchInputEl.addEventListener("blur", (event) => {
+    Search.searchFormEl.addEventListener("blur", (event) => {
       event.stopPropagation();
       html.classList.remove('searching');
+    })
+    window.addEventListener("click", (event) => {
+      html.classList.remove('searching');
+      event.stopPropagation();
     })
  
   },
@@ -173,12 +177,11 @@ var Search = {
   },
   delete: function () {
     Search.searchDeleteEl.addEventListener("click", function (event) {
+      let searchArea = this.closest(".search-area");
       event.stopPropagation();
       Search.searchInputEl.value = '';// 인풋값 초기화
-      setTimeout(function () {
-        html.classList.remove('searching');
-        Search.searchAreaEl.classList.remove('filled');
-       },50)
+      searchArea.classList.remove('filled');
+      html.classList.remove('searching');
     })
   }
 }
