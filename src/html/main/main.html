@@ -1,11 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
-  @@include('@@webRoot/html/_include/_head.html',{"title": "효성첨단소재"})
+  @@include('@@webRoot/html/_include/_head.html',{"title": "카카오엔터프라이즈"})
 </head>
 
-<body class="">
+<body class="home">
   <div id="wrap">
     @@include('@@webRoot/html/_include/_header.html', {"main": true})
     <main id="contatiner">
@@ -113,12 +114,339 @@
               </div>
             </div>
           </div>
+
+          <div class="suggestion-area">
+            <div class="suggestion-keyword">
+              <p class="title">추천 키워드</p>
+              <button type="button" class="btn btn-keyword">카카오 i 클라우드 요금제</button>
+              <button type="button" class="btn btn-keyword">카카오워크 도입</button>
+              <button type="button" class="btn btn-keyword">kakao i cloud</button>
+            </div>
+          </div>
         </div>
       </section>
       <!-- 히어로 섹션 끝 -->
+
+      <!-- 서비스 섹션 -->
+      <section class="section service-section">
+        <div class="inner">
+          <div class="title-header-wrap">
+            <i class="icon-title-service"></i>
+            <h2>서비스별 고객지원</h2>
+          </div>
+        </div>
+        <div class="main-service__list">
+          <div class="main-service__group ke-marquee ke-marquee--play">
+            <div class="ke-marquee__inner">
+              <div class="ke-marquee__items">
+                <!-- 아이클라우드  -->
+                <div class="main-service__item main-service--page">
+                  <a href="" class="main-service__link">
+                    <div class="main-service__thumb">
+                      <figure class="ke-lazyload ke-lazyload--loaded">
+                        <span class="ke-lazyload__color-preview"></span>
+                        <img data-unveil="@@webRoot/assets/images/main-bi-cloud.svg" src="@@webRoot/assets/images/main-bi-product.svg" alt="" class="ke-lazyload--loaded">
+                        <noscript><img src="@@webRoot/assets/images/main-bi-cloud.svg" alt="" /></noscript>
+                      </figure><!-- .ke-lazyload -->
+                    </div><!-- .main-service__thumb -->
+                  </a><!-- .main-service__link -->
+                </div>
+                <!-- 아이클라우드 끝 -->
+  
+                <!-- 카카오 워크  -->
+                <div class="main-service__item main-service--page">
+                  <a href="" class="main-service__link">
+  
+                    <div class="main-service__thumb">
+                      <figure class="ke-lazyload ke-lazyload--loaded">
+                        <span class="ke-lazyload__color-preview"></span>
+                        <img data-unveil="@@webRoot/assets/images/main-bi-work.svg" src="@@webRoot/assets/images/main-bi-work.svg" alt="" class="ke-lazyload--loaded">
+                        <noscript><img src="@@webRoot/assets/images/main-bi-work.svg" alt="" /></noscript>
+                      </figure><!-- .ke-lazyload -->
+                    </div><!-- .main-service__thumb -->
+                  </a><!-- .main-service__link -->
+                </div>
+                <!-- 카카오 워크 끝 -->
+  
+                <!-- 카카오 라스  -->
+                <div class="main-service__item main-service--page">
+                  <a href="" class="main-service__link">
+  
+                    <div class="main-service__thumb">
+                      <figure class="ke-lazyload ke-lazyload--loaded">
+                        <span class="ke-lazyload__color-preview"></span>
+                        <img data-unveil="@@webRoot/assets/images/main-bi-laas.svg" src="@@webRoot/assets/images/main-bi-laas.svg" alt="" class="ke-lazyload--loaded">
+                        <noscript><img src="@@webRoot/assets/images/main-bi-laas.svg" alt="" /></noscript>
+                      </figure><!-- .ke-lazyload -->
+                    </div><!-- .main-service__thumb -->
+                  </a><!-- .main-service__link -->
+                </div>
+                <!-- 카카오 라스 끝 -->
+  
+                <!-- 카카오 헤이 -->
+                <div class="main-service__item main-service--page">
+                  <a href="" class="main-service__link">
+  
+                    <div class="main-service__thumb">
+                      <figure class="ke-lazyload ke-lazyload--loaded">
+                        <span class="ke-lazyload__color-preview"></span>
+                        <img data-unveil="@@webRoot/assets/images/main-bi-product.svg" src="@@webRoot/assets/images/main-bi-product.svg" alt="" class="ke-lazyload--loaded">
+                        <noscript><img src="@@webRoot/assets/images/main-bi-product.svg" alt="" /></noscript>
+                      </figure><!-- .ke-lazyload -->
+                    </div><!-- .main-service__thumb -->
+                  </a><!-- .main-service__link -->
+                </div>
+                <!-- 카카오 헤이 끝 -->
+  
+                <!-- 카카오 홈 -->
+                <div class="main-service__item main-service--page">
+                  <a href="" class="main-service__link">
+  
+                    <div class="main-service__thumb">
+                      <figure class="ke-lazyload ke-lazyload--loaded">
+                        <span class="ke-lazyload__color-preview"></span>
+                        <img data-unveil="@@webRoot/assets/images/main-bi-home.svg" src="@@webRoot/assets/images/main-bi-home.svg" alt="" class="ke-lazyload--loaded">
+                        <noscript><img src="@@webRoot/assets/images/main-bi-home.svg" alt="" /></noscript>
+                      </figure><!-- .ke-lazyload -->
+                    </div><!-- .main-service__thumb -->
+                  </a><!-- .main-service__link -->
+                </div>
+                <!-- 카카오 홈 끝 -->
+  
+              </div>
+            </div>
+          </div>
+          <!-- .main-service__group -->
+        </div>
+      </section>
+      <!-- 서비스 섹션 끝 -->
+
+
+      <!-- 자주묻는 질문 섹션 -->
+      <section class="section question-section">
+        <div class="inner">
+          <div class="title-header-wrap">
+            <i class="icon-title-comment"></i>
+            <h2>자주 묻는 질문</h2>
+          </div>
+          <div class="contents-wrap">
+            <!-- @@ 기본) 구조 그대로 지우고 쓰면 됨 스타일 노터치  -->
+            <div class="category-sort-wrap">
+              <!-- @@ 모바일 탑 붙을때 ) .sticky-top추가 -->
+              <div class="category-sort-container sticky-top">
+                <!-- @@ 대분류일경우 .main 클래스 / 활성화 시 active -->
+                <div class="category-main-list">
+                  <a href="javascript:;" class="category-button btn-light main active">카카오 i 클라우드</a>
+                  <a href="javascript:;" class="category-button btn-light main">카카오워크</a>
+                  <a href="javascript:;" class="category-button btn-light main">카카오 i 라스</a>
+                </div>
+              </div>
+            </div>
+            <div class="list-link-wrap">
+              <ul>
+                <li>
+                  <a href="javascirpt:;">
+                    <div class="title-container">
+                      <div class="title-aids">
+                        <i class="icon-question"></i>
+                      </div>
+                      <div class="title-name">계정 보호 및 보안 기능에 대해 안내 드립니다.</div>
+                    </div>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascirpt:;">
+                    <div class="title-container">
+                      <div class="title-aids">
+                        <i class="icon-question"></i>
+                      </div>
+                      <div class="title-name">계정 보호 및 보안 기능에 대해 안내 드립니다.</div>
+                    </div>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascirpt:;">
+                    <div class="title-container">
+                      <div class="title-aids">
+                        <i class="icon-question"></i>
+                      </div>
+                      <div class="title-name">계정 보호 및 보안 기능에 대해 안내 드립니다.</div>
+                    </div>
+                    <i class="icon-arrow-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="contents-btn-wrap">
+              <button class="btn btn-outline btn-lg">더보기 <i class="icon-gray-arrow"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 자주묻는 질문 섹션 끝 -->
     </main>
     @@include('@@webRoot/html/_include/_footer.html')
   </div>
 </body>
+
+<script>
+    /* **************************************** *
+     * Global Variable
+     * **************************************** */
+    // Main - Key visual section autoplay
+    var mainVisualProgress = null;
+
+    // Marquee options
+    var marqueeSpeed = (JT.is_screen(860)) ? 35 : 50;
+    var marqueeTimeline = [];
+
+    gsap.registerPlugin(ScrollTrigger);
+
+
+    main_service_hover();
+    ke_marquee();
+    // 기술/서비스 모바일 hover 지원
+    function main_service_hover() {
+
+      if (!$('body').hasClass('home') || !$('html').hasClass('mobile')) {
+        return;
+      }
+
+      $('.main-service__list').on({
+        click: function (e) {
+          var $this = $(this);
+          if (!$this.hasClass('main-service--active')) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $this.addClass('main-service--active');
+          }
+        }
+      }, '.main-service__link');
+
+    }
+
+
+    // Marquee setting
+    function ke_marquee() {
+
+      if (!$('body').hasClass('home') && !$('body').hasClass('page-template-info-about')) {
+        return;
+      }
+
+      var selector = ($('body').hasClass('home')) ? '.main-service__group' : '.about-browse__list';
+      var item = ($('body').hasClass('home')) ? '.main-service__item' : '.about-browse__item';
+
+      // Init
+      $(selector).each(function (idx) {
+
+        var $element = $(this);
+
+        $element.addClass('ke-marquee');
+        $element.find(item).wrapAll('<div class="ke-marquee__items">');
+
+        var $elementItem = $element.find('.ke-marquee__items');
+        var containerWidth = $element.width();
+        var itemWidth = $elementItem.width();
+        var itemLength = Math.ceil(containerWidth / itemWidth) + 1;
+        var loopDuration = itemWidth / marqueeSpeed - (idx * 2);
+
+        // Lazyload support
+        $elementItem.find('.ke-lazyload').each(function () {
+          var $this = $(this);
+          var $img = $this.find('img');
+          $img.attr('src', $img.attr('data-unveil')).addClass('ke-lazyload--loaded');
+          $this.addClass('ke-lazyload--loaded');
+        });
+
+        // Clone item
+        for (var i = 0; i < itemLength; i++) {
+          $elementItem.clone().appendTo($element);
+        }
+
+        $element.find('.ke-marquee__items').wrapAll('<div class="ke-marquee__inner">');
+
+        var $marquee = $element.find('.ke-marquee__inner');;
+        var marqueeEndpoint = null;
+
+        if ((idx % 2 == 0)) {
+          gsap.set($marquee, {
+            x: -itemWidth
+          });
+          marqueeEndpoint = -itemWidth * 2;
+        } else {
+          gsap.set($marquee, {
+            x: -(itemWidth * 2)
+          });
+          marqueeEndpoint = 0;
+        }
+
+        marqueeTimeline[idx] = gsap.timeline({
+          repeat: -1,
+          paused: true
+        });
+        marqueeTimeline[idx].to($marquee, {
+          duration: 0,
+          x: -itemWidth,
+          ease: 'none'
+        });
+        marqueeTimeline[idx].to($marquee, {
+          duration: loopDuration,
+          x: marqueeEndpoint,
+          ease: 'none'
+        });
+
+        // Hover
+        if ($('html').hasClass('pc')) {
+          $element.on({
+            mouseenter: function () {
+              gsap.fromTo(marqueeTimeline[idx], {
+                timeScale: 1
+              }, {
+                duration: .3,
+                timeScale: 0.3,
+                ease: 'power1.out'
+              });
+            },
+            mouseleave: function () {
+              gsap.fromTo(marqueeTimeline[idx], {
+                timeScale: 0.3
+              }, {
+                duration: .3,
+                timeScale: 1,
+                ease: 'power1.out'
+              });
+            }
+          });
+        }
+
+        // Inview
+        ScrollTrigger.create({
+          trigger: $element,
+          once: false,
+          onEnter: function () {
+            $element.addClass('ke-marquee--play').removeClass('ke-marquee--pause');
+            marqueeTimeline[idx].play();
+          },
+          onEnterBack: function () {
+            $element.addClass('ke-marquee--play').removeClass('ke-marquee--pause');
+            marqueeTimeline[idx].play();
+          },
+          onLeave: function () {
+            $element.addClass('ke-marquee--pause').removeClass('ke-marquee--play');
+            marqueeTimeline[idx].pause();
+          },
+          onLeaveBack: function () {
+            $element.addClass('ke-marquee--pause').removeClass('ke-marquee--play');
+            marqueeTimeline[idx].pause();
+          }
+        });
+
+      });
+
+    }
+</script>
 
 </html>

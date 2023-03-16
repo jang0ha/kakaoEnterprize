@@ -1,5 +1,3 @@
-@use '../abstract/variables' as *;
-
 /*리셋 스타일*/
 
 *,
@@ -96,10 +94,10 @@ sup {
 }
 
 a {
-  color:$black;
+  color:#191919;
   text-decoration: none;
   &:visited{
-    color: $black;
+    color: #191919;
   }
   &:hover{
     text-decoration: none;

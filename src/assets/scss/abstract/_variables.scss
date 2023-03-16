@@ -1,4 +1,3 @@
-@use 'functions'as *;
 
 $primary: #ffe100;
 $light-yellow: #FFF5CD;
@@ -9,18 +8,58 @@ $gray: #666;
 $border-color:#E6E6E6;
 
 
+
 $blue:#0050FF;
 $danger:#E8423F;
+$success : #00e122;
+$secondary : $dark-gray;
+$warning : #ff5100;
 $white: #fff;
 $black: #191919;
 
-$header-height: rem(60);
-$header-height-lg: rem(80);
-$search-height: rem(50);
-$search-height-lg: rem(56);
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $blue,
+  "success":    $success,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light-gray,
+  "dark":       $dark-gray,
+  "white":      $white,
+  "black":      $black,
+  "keyword":      $light-gray,
+) !default;
+
+
+$header-height: 60rem;
+$header-height-lg: 80rem;
+$search-height: 50rem;
+$search-height-lg: 56rem;
 
 
 $box-shadow : 0 0.5rem 11rem 0px rgb(0 0 0 / 9%) !important;
 $box-shadow-lg :0px 10px 30px rgba(0, 0, 0, 0.1) !important;
-$border-radius: rem(10);
-$border-radius-lg: rem(50);
+$border-radius: 10rem;
+$border-radius-md: 30rem;
+$border-radius-lg: 50rem;
+
+
+
+
+$variable-prefix:             bs- !default;
+
+$min-contrast-ratio:   3 !default; //3/ 4.5 / 7 만 허용되는 값임, 더 밝아지기위해서는 3으로가면되긴하나 적용안될수도 있음. 
+$color-contrast-dark:      $black !default;
+$color-contrast-light:     $white !default;
+
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$btn-hover-bg-shade-amount:       1.5% !default;
+$btn-hover-bg-tint-amount:        20% !default;
+$btn-hover-border-shade-amount:   20% !default;
+$btn-hover-border-tint-amount:    20% !default;
+$btn-active-bg-shade-amount:      20% !default;
+$btn-active-bg-tint-amount:       20% !default;
+$btn-active-border-shade-amount:  25% !default;
+$btn-active-border-tint-amount:   10% !default;

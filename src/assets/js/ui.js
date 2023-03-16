@@ -64,17 +64,17 @@ var Menu = {
   },
 
   click: function () {
-   Menu.menuButtonEl.addEventListener('click',  (event) => {
+    Menu.menuButtonEl.addEventListener('click', (event) => {
       event.stopPropagation(); // 이벤트 버블링 정지!
-     body.classList.toggle("open-menu");
-     if (body.classList.contains('open-menu')) {
-       stopScroll();
+      body.classList.toggle("open-menu");
+      if (body.classList.contains('open-menu')) {
+        stopScroll();
       } else {
-      playScroll();
-     }
+        playScroll();
+      }
     })
-   }
-}
+  }
+  }
 
 
 var Select = {
@@ -140,29 +140,34 @@ var Search = {
   searchHelperEl: document.querySelector(".search-helper"),
   searchFormEl: document.querySelector('.search'),
   searchDeleteEl: document.querySelector('.clear-button'),
-  searchAreaEl: document.querySelector('.search-area'),
+  searchContianerEl: document.querySelector('.search-container'),
+  closeBtnEl :document.querySelector(".search-header .history-btn"),
   init: function () {
-    this.click();
+    this.open();
     this.blur();
     this.filled();
     this.delete();
+    this.close();
   },
-  click: function () {
+  open: function () {
     Search.searchInputEl.addEventListener("click", (evnet) => {
-      event.stopPropagation();
       html.classList.add('searching');
+
+      if (body.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+        stopScroll();
+      } 
     })
+
   },
   blur: function () {
-    Search.searchFormEl.addEventListener("blur", (event) => {
+    Search.searchInputEl.addEventListener("blur", (event) => {
       event.stopPropagation();
-      html.classList.remove('searching');
+      // html.classList.remove('searching');
+      if (!body.classList.contains('mobile')) {
+        html.classList.remove('searching');
+      }
     })
-    window.addEventListener("click", (event) => {
-      html.classList.remove('searching');
-      event.stopPropagation();
-    })
- 
+
   },
   filled: function () {
     // 삭제버튼 노출
@@ -181,8 +186,20 @@ var Search = {
       event.stopPropagation();
       Search.searchInputEl.value = '';// 인풋값 초기화
       searchArea.classList.remove('filled');
-      html.classList.remove('searching');
+      // html.classList.remove('searching');
     })
+  },
+  close: function () {
+    Search.closeBtnEl.addEventListener("click", function (event) { 
+      event.stopPropagation();
+      if (body.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+        html.classList.remove('searching');
+        playScroll()
+        return;
+      } else {
+        
+      }
+    });
   }
 }
 
@@ -204,8 +221,20 @@ function stopScroll() {
   html.classList.add("fixed"); //html 고정
 }
 
+// function hideSearch() {
+//   searchInputEl.value = '';// 인풋값 초기화
+//   searchArea.classList.remove('filled');
+// }
+
+function search() {
+  if(body.classList.contains('pc') && html.classList.contains('searching')){
+    html.classList.remove('searching');
+    playScroll()
+  }
+}
+
 function deviceWidth() {
-  if (window.innerWidth <= 996) {
+  if (window.innerWidth <= 768) {
     body.classList.remove('pc');
     body.classList.add('mobile');
 
@@ -229,6 +258,7 @@ function CheckValueLengh() {
 
 window.addEventListener("resize", () => {
   deviceWidth()
+  search()
 })
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -259,3 +289,5 @@ function deviceCheck() {
       }
   }
 }
+
+

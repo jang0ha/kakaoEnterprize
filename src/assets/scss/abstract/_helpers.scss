@@ -1,5 +1,6 @@
 @use 'mediaQuery' as *;
 @use 'functions' as *;
+@use 'variables' as *;
 
 /*공통 스타일*/
 
@@ -39,5 +40,86 @@
 
 
 .section{
-  margin-top: rem(100);
+  margin-top: rem(80);
+}
+
+
+// 카드 단위
+.category-sort-wrap{
+  display: block;
+    width: 100%;
+    // overflow: visible;
+    > *{
+      &:only-child{
+        display: block;
+        /* width: 100%; */
+        margin-left: -5%;
+        margin-right: -5%;
+        width: 110%;
+        >div{
+          max-width: none;
+          justify-content: flex-start;
+        }
+      }
+    }
+    .category-sort-container{
+      flex: none;
+      margin-left: -5%;
+      margin-right: -5%;
+    }
+    select{
+      width: 100%;
+      flex: none;
+      margin-top: 5rem;
+    }
+
+  @include res--mobile-up{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: $white;
+    transition:  all 0.3s;
+    position: relative;
+    > *{
+      &:only-child{
+        max-width: none !important;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        >div{
+          max-width: none;
+          justify-content: center;
+        }
+      }
+    }
+    .category-sort-container{
+      flex: 1 0 0%;
+      background-color: $white;
+    
+    }
+  
+    select{
+      width: 150rem;
+      flex: 0 0 150rem;
+    }
+  }
+}
+
+//컨텐츠 박스
+.contents-wrap{
+  padding:0;
+  border:0;
+  border-radius: none;
+  & + .contens-wrap{
+    margin-top: 60rem;
+  } 
+  @include res--mobile-up{
+    padding:rem(60) rem(80);
+    border:1rem solid $border-color;
+    border-radius: $border-radius-md;
+    transition: padding 0.3s;
+    & + .contens-wrap{
+      margin-top: 100rem;
+    }
+  }
 }

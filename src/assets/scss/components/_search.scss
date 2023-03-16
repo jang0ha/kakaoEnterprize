@@ -15,9 +15,7 @@
     background-color: $middle-gray;
     width: rem(28);
     height: rem(28);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s;
+    display: none;
     &:hover, &:focus{
       background-color: $primary;
       outline: 0;
@@ -31,8 +29,7 @@
   }
   .filled & {
     .clear-button{
-      opacity: 1;
-      visibility: visible;
+      display: block;
     }
   }
   @include res--mobile-up{
@@ -51,15 +48,14 @@
   padding: rem(15);
   background:$white;
   z-index: 1030;
-  transition: all 0.3s;
   overflow-y: auto;
   position: fixed;
-  top:calc($header-height + $search-height-lg + rem(20));
+  top:calc($header-height + $search-height-lg + rem(40));
   left: 0;
-  height: calc(100vh - calc($header-height + $search-height-lg + rem(20)));
+  height: calc(100vh - calc($header-height + $search-height-lg + rem(40)));
   display: none;
   li{
-    padding:rem(15);
+    padding:rem(8);
     &+li{
       margin-top: rem(5);
     }
@@ -153,6 +149,7 @@
     padding: rem(10) rem(20);
     margin:0;
     height: calc(100vh - $header-height);
+    z-index: 1030;
   }
   @include res--mobile-up {
     width: 80%;

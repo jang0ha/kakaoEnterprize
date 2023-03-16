@@ -1,4 +1,5 @@
-
+@use 'functions' as *;
+@use 'variables' as *;
 /*믹스인*/
 
 // 플렉스 / 가로
@@ -57,4 +58,72 @@ $path-image : '../images/';
     -webkit-line-clamp: $lines;
     -webkit-box-orient: vertical;
   }
+}
+
+// 버튼 
+@mixin button {
+  @include hstack(10);
+  @include rounded($border-radius-lg);
+	border-color: transparent;
+	padding: rem(10) rem(24);
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+  font : {
+    size: rem(14);
+    weight:bold;
+  }
+	box-shadow: none!important;
+	border-width: 1px;
+	border-style: solid;
+	background-color: transparent;
+
+	//this determines Mozilla to show the padding
+	// @include shadow;
+  // @include button-bg($value);
+	&:hover {
+		text-decoration: none;
+	}
+	&:active {
+		position: relative;
+		top: 1px;
+	}
+}
+
+@mixin button-bg( 
+	$background,
+	$border :  if(
+		$color == $color-contrast-light, 
+		shade-color($background, $btn-hover-bg-tint-amount),
+		tint-color($background, $btn-hover-bg-shade-amount)
+		),
+	$color: color-contrast($background),
+	$hover-background:
+	// 조건 / true / false
+	 if(
+		$color == $color-contrast-dark, 
+		shade-color($background, $btn-hover-bg-shade-amount),
+		tint-color($background, $btn-hover-bg-tint-amount)
+		)
+ ) {
+	border-color: $border;
+  background-color: $background;
+	// @include gradient(lighten($color, 13%), $color);//그라디언트
+  // color: mix(#fff, $color, 90%);
+	// color: $theme-colors.invert($background);
+	color: $color;
+	&:hover ,&:active{
+		background-color: $hover-background;
+		// @include gradient(lighten($color, 10%), darken($color, 5%))//그라디언트
+    // background:lighten($background, 10%);
+    // border-color: lighten($background, 13%);
+	}
+}
+
+
+
+@mixin rounded($border) {
+	-webkit-border-radius: $border;
+	-moz-border-radius: $border;
+	border-radius: $border;
 }

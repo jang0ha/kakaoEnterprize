@@ -11,7 +11,8 @@
   max-width: none;
   padding: 0;
   width: 100%;
-
+  top: 0;
+  background: $white;
   .inner {
     @include hstack(0);
     font-size: rem(15);
