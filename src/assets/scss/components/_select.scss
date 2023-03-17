@@ -23,7 +23,7 @@
     position: absolute;
     top: 50%;
     right: 20px;
-    background-image: key-btn(chevron);
+    background-image: svg-image(chevron);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -45,6 +45,9 @@
   .searching & {
     display: none;
   }
+  .contents-wrap &{
+    width: 100%;
+  }
   @include res--mobile-up{
     height: $search-height;
     width:rem(200);
@@ -53,6 +56,12 @@
     .searching &{
       display: block;
     }
+    .contents-wrap &{
+      border:  1px  solid  $border-color;
+      width: rem(150);
+      flex: 0 0 rem(150);
+  
+    }
   }
 
 }
@@ -60,7 +69,7 @@
   visibility:hidden;
   opacity:0;
   transition:0.25s;
-  padding:rem(15);
+  padding:rem(8);
   border:1px solid $border-color;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
@@ -77,15 +86,24 @@
       size: rem(14);
     };
     cursor: pointer;
-    padding:rem(15);
+    padding:rem(10);
     word-break: break-all;
     white-space: pre-line;
     &:hover{
       background-color: $light-gray;
     }
   }
+ 
+  .contents-wrap &{
+    width: 100%;
+
+  }
   @include res--mobile-up{
     width: rem(200);
+    .contents-wrap &{
+      width: rem(150);
+      top: rem(55);
+    }
   }
 }
 

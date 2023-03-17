@@ -9,6 +9,7 @@
   input[type=search]{
     padding:rem(0) rem(0) rem(0) rem(14);
     // padding:rem(0.75) rem(20);
+    height: auto;
   }
   .clear-button{
     padding:0;
@@ -45,7 +46,7 @@
 }
 .search-helper{
   width: 100%;
-  padding: rem(15);
+  padding: rem(8);
   background:$white;
   z-index: 1030;
   overflow-y: auto;

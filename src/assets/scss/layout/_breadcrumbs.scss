@@ -17,7 +17,7 @@
         transform: translate(50%, -50%);
         width: rem(5);
         height: rem(10);
-        background-image: key-btn(arrow-right, 333);
+        background-image: svg-image(arrow-right, 333);
         background-size: contain;
       }
     }

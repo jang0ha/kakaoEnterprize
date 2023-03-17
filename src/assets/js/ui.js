@@ -1,13 +1,12 @@
 // gsap 플러그인 전역 등록 ()
 gsap.registerPlugin(ScrollTrigger);
 
-$(document).ready(function () { 
-  var agent = navigator.userAgent.toLowerCase();// 브라우저 체크
+$(document).ready(function () {
+  var agent = navigator.userAgent.toLowerCase(); // 브라우저 체크
   // var platform = navigator.platform.toLowerCase();
-  if(agent.indexOf(navigator.platform.toLowerCase())>0 ){	//모바일로 접속
+  if (agent.indexOf(navigator.platform.toLowerCase()) > 0) { //모바일로 접속
     console.log('asdf');
-  }
-  else {
+  } else {
     if (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1 || agent.indexOf("msie") != -1) {
       $('html').addClass('br-ie');
       console.llog
@@ -16,7 +15,7 @@ $(document).ready(function () {
         $('html').addClass('br-edge');
       } else {
         $('html').addClass('br-ch');
-  
+
         if (agent.indexOf("windows") != -1 || agent.indexOf("android") != -1 && platform.indexOf("mac") == -1) {
           $('html').addClass('br-win-ch');
         }
@@ -39,6 +38,7 @@ $(document).ready(function () {
 
 let html = document.querySelector("html");
 let body = document.querySelector("body");
+let header = document.querySelector("header");
 
 
 // var Gnb = {
@@ -58,7 +58,7 @@ let body = document.querySelector("body");
 
 
 var Menu = {
-  menuButtonEl : document.querySelector('.menu-button'),
+  menuButtonEl: document.querySelector('.menu-button'),
   init: function () {
     this.click();
   },
@@ -74,7 +74,7 @@ var Menu = {
       }
     })
   }
-  }
+}
 
 
 var Select = {
@@ -91,7 +91,7 @@ var Select = {
       console.log(_id);
       var wrapper = document.createElement("div");
       wrapper.setAttribute("class", "custom-select custom-select__" + _id);
-  
+
       var input = document.createElement("input");
       input.setAttribute("type", "text");
       input.setAttribute("class", "custom-select-input");
@@ -101,7 +101,7 @@ var Select = {
         "placeholder",
         $(this)[0].options[$(this)[0].selectedIndex].innerText
       );
-  
+
       $(this).before(wrapper);
       var $custom = $(".custom-select__" + _id);
       $custom.append(input);
@@ -112,13 +112,13 @@ var Select = {
       for (var i = 0; i < $ops.length; i++) {
         $ops_list.append(
           "<div data-value='" +
-            $ops[i].value +
-            "'>" +
-            $ops[i].innerText +
-            "</div>"
+          $ops[i].value +
+          "'>" +
+          $ops[i].innerText +
+          "</div>"
         );
       }
-  
+
       $custom_input.click(function () {
         $custom.toggleClass("active");
       });
@@ -141,7 +141,7 @@ var Search = {
   searchFormEl: document.querySelector('.search'),
   searchDeleteEl: document.querySelector('.clear-button'),
   searchContianerEl: document.querySelector('.search-container'),
-  closeBtnEl :document.querySelector(".search-header .history-btn"),
+  closeBtnEl: document.querySelector(".search-header .history-btn"),
   init: function () {
     this.open();
     this.blur();
@@ -153,9 +153,9 @@ var Search = {
     Search.searchInputEl.addEventListener("click", (evnet) => {
       html.classList.add('searching');
 
-      if (body.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+      if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
         stopScroll();
-      } 
+      }
     })
 
   },
@@ -163,7 +163,7 @@ var Search = {
     Search.searchInputEl.addEventListener("blur", (event) => {
       event.stopPropagation();
       // html.classList.remove('searching');
-      if (!body.classList.contains('mobile')) {
+      if (!html.classList.contains('mobile')) {
         html.classList.remove('searching');
       }
     })
@@ -184,29 +184,91 @@ var Search = {
     Search.searchDeleteEl.addEventListener("click", function (event) {
       let searchArea = this.closest(".search-area");
       event.stopPropagation();
-      Search.searchInputEl.value = '';// 인풋값 초기화
+      Search.searchInputEl.value = ''; // 인풋값 초기화
       searchArea.classList.remove('filled');
       // html.classList.remove('searching');
     })
   },
   close: function () {
-    Search.closeBtnEl.addEventListener("click", function (event) { 
+    Search.closeBtnEl.addEventListener("click", function (event) {
       event.stopPropagation();
-      if (body.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+      if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
         html.classList.remove('searching');
         playScroll()
         return;
       } else {
-        
+
       }
     });
   }
 }
 
+var Category = {
+  categoryContainerEl: document.querySelector('.category-sort-container'),
+  moreButtonEl: document.querySelector('.category-toggle-button'),
+  subCategoryWrapEl: document.querySelector('.category-sub-list'),
+  init: function () {
+    this.toggle();
+    this.sticky();
+  },
+  toggle: function () {
+    if (window.matchMedia('miin-width: 992px').matches) {
+      Category.moreButtonEl.addEventListener("click", event => {
+        Category.moreButtonEl.classList.toggle('active');
+        if (Category.moreButtonEl.classList.contains("active")) {
+          Category.subCategoryWrapEl.classList.add("opend-category");
+        } else {
+          Category.subCategoryWrapEl.classList.remove("opend-category");
+        }
+      })
+    }
+  },
+  sticky: function () {
+    let headerHeight = header.offsetHeight;
+    let stickyEl = document.querySelector(".sticky-selector");
+    let topPos = window.pageYOffset + stickyEl.getBoundingClientRect().top;;
+    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+    console.log(topPos);
+    // console.log(scrollTop);
+
+    window.addEventListener('scroll', function () {
+      if (scrollTop == topPos) {
+        stickyEl.classList.add('sticked');
+      } else {
+        stickyEl.classList.remove('sticked');
+      }
+
+    });
+
+    $(window).scroll(function () {
+      var scrT = $(window).scrollTop();
+      console.log(scrT); //스크롤 값 확인용
+      if (scrT = topPos) {
+        //스크롤이 끝에 도달했을때 실행될 이벤트
+        console.log(';asdf');
+        stickyEl.classList.add('sticked');
+      } else {
+        //아닐때 이벤트
+        stickyEl.classList.remove('sticked');
+      }
+    });
+    // $(window).scroll(function(){
+    //   var scrT = $(window).scrollTop();
+    //   console.log(scrT); //스크롤 값 확인용
+    //   if(scrT == $(document).height() - $(window).height()){
+    //     //스크롤이 끝에 도달했을때 실행될 이벤트
+    //   } else {
+    //     //아닐때 이벤트
+    //   }
+    // }
+  },
+}
 
 Menu.init();
 Select.init();
 Search.init();
+Category.init();
 
 // --------------------------------------------------------
 // 함수 형태로 형태로 만들기
@@ -215,8 +277,9 @@ Search.init();
 
 
 function playScroll() {
-  html.classList.remove("fixed");//html 스크롤
+  html.classList.remove("fixed"); //html 스크롤
 }
+
 function stopScroll() {
   html.classList.add("fixed"); //html 고정
 }
@@ -227,33 +290,34 @@ function stopScroll() {
 // }
 
 function search() {
-  if(body.classList.contains('pc') && html.classList.contains('searching')){
+  if (html.classList.contains('pc') && html.classList.contains('searching')) {
     html.classList.remove('searching');
     playScroll()
   }
 }
 
 function deviceWidth() {
-  if (window.innerWidth <= 768) {
-    body.classList.remove('pc');
-    body.classList.add('mobile');
+  if (window.innerWidth <= 991) {
+    html.classList.remove('desktop');
+    html.classList.add('mobile');
 
   } else {
-    body.classList.add('pc');
-    body.classList.remove('mobile');
-    if (body.classList.contains('open-menu')) { 
+    html.classList.add('desktop');
+    html.classList.remove('mobile');
+    if (body.classList.contains('open-menu')) {
       body.classList.remove('open-menu');
       playScroll();
     }
-   }
+  }
 }
+
 function CheckValueLengh() {
   let inputs = [...document.querySelectorAll("input[type=search]")];
-  if( inputs.value.length > 0 ) {
+  if (inputs.value.length > 0) {
     this.nextElementSibling.classList.add("filled");
-      return false;
+    return false;
   }
-  
+
 }
 
 window.addEventListener("resize", () => {
@@ -277,17 +341,15 @@ function deviceCheck() {
   var pcDevice = "win16|win32|win64|mac|macintel";
 
   // 접속한 디바이스 환경
-  if ( navigator.platform ) {
-      if ( pcDevice.indexOf(navigator.platform.toLowerCase()) < 0 ) {
-        console.log('MOBILE');
-        body.classList.add("mobile");
-        body.classList.remove("pc");
-      } else {
-        console.log('PC');
-        body.classList.add("pc");
-        body.classList.remove("mobile");
-      }
+  if (navigator.platform) {
+    if (pcDevice.indexOf(navigator.platform.toLowerCase()) < 0) {
+      console.log('MOBILE');
+      body.classList.add("mobile");
+      body.classList.remove("pc");
+    } else {
+      console.log('PC');
+      body.classList.add("pc");
+      body.classList.remove("mobile");
+    }
   }
 }
-
-

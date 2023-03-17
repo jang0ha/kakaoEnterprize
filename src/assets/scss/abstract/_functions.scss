@@ -36,7 +36,7 @@
 // 호버액션 아이콘  < 는 %3C 로, > 는 %3E, # 대신 %23 로 치환
 $_default-color:555;
 
-@function key-btn($key-icon-name, $color:$_default-color){
+@function svg-image($key-icon-name, $color:$_default-color){
   $key-icon-list :(
     outlink:"%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10' d='M4.1,2.5h5.4v5.3'%3E%3C/path%3E%3Cpath fill='none' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10' d='M8.9,3.2L2.2,9.8'%3E%3C/path%3E%3C/svg%3E",
     chevron:"%3Csvg width='8' height='12' viewBox='0 0 8 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 11L6 5.93671L1 1' stroke='%23#{$color}' stroke-width='2' stroke-miterlimit='10'%3E%3C/path%3E%3C/svg%3E",

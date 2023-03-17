@@ -12,7 +12,7 @@ $border-color:#E6E6E6;
 $blue:#0050FF;
 $danger:#E8423F;
 $success : #00e122;
-$secondary : $dark-gray;
+$secondary : $blue;
 $warning : #ff5100;
 $white: #fff;
 $black: #191919;
@@ -25,10 +25,12 @@ $theme-colors: (
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light-gray,
+  "middle":      $middle-gray,
   "dark":       $dark-gray,
   "white":      $white,
   "black":      $black,
   "keyword":      $light-gray,
+  "default":      $border-color,
 ) !default;
 
 
@@ -56,9 +58,9 @@ $color-contrast-light:     $white !default;
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 $btn-hover-bg-shade-amount:       1.5% !default;
-$btn-hover-bg-tint-amount:        20% !default;
-$btn-hover-border-shade-amount:   20% !default;
-$btn-hover-border-tint-amount:    20% !default;
+$btn-hover-bg-tint-amount:        10% !default;
+$btn-hover-border-shade-amount:   10% !default;
+$btn-hover-border-tint-amount:    10% !default;
 $btn-active-bg-shade-amount:      20% !default;
 $btn-active-bg-tint-amount:       20% !default;
 $btn-active-border-shade-amount:  25% !default;

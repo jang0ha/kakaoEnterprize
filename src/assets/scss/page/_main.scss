@@ -26,9 +26,13 @@
       margin-top: rem(40);
       max-width: 70%;
       margin:auto;
-    justify-content: flex-start;
-
+      justify-content: flex-start;
+      
       gap: rem(12);
+      p{
+        flex:none;
+        width: auto;
+      }
     }
   }
 }

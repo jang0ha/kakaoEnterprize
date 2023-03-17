@@ -57,6 +57,7 @@ $path-image : '../images/';
     text-overflow: ellipsis;
     -webkit-line-clamp: $lines;
     -webkit-box-orient: vertical;
+		word-break: break-all;
   }
 }
 
@@ -118,6 +119,30 @@ $path-image : '../images/';
     // background:lighten($background, 10%);
     // border-color: lighten($background, 13%);
 	}
+}
+
+@mixin button-outline-variant(
+  $color,
+  $color-hover: color-contrast($color),
+  $active-background: $color,
+  $active-border: $color,
+  $active-color: color-contrast($active-background)
+) {
+  color: $color;
+  border-color: $color;
+
+  &:hover {
+    color: $color-hover;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+
+  &:disabled,
+  &.disabled {
+    color: $color;
+    background-color: transparent;
+  }
 }
 
 

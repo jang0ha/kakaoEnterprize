@@ -1,0 +1,66 @@
+@use '../abstract/'as *;
+
+
+
+//컨텐츠 리스트
+.list-link-wrap {
+  margin-top: rem(20);
+
+  li{
+    border-bottom: 1px solid $border-color;
+  }
+  .link-container {
+    @include hstack(20);
+    align-items: flex-start;
+    padding: rem(30) 0;
+    width: 100%;
+    .link-bullets, .link-assistant{
+      @include hstack(null);
+      justify-content:flex-start;
+      height:100%;
+      flex: none;
+
+      i{
+        width: rem(20);
+        height: rem(20);
+      }
+    }
+    .link-bullets{
+      min-width: rem(20);
+    }
+    .link-name{
+      @include ellipsis(2);
+      flex-grow: 1;
+      font : {
+        size: rem(18);
+        weight: 400;
+      }
+    }
+    .date {
+      font : {
+        size: rem(16);
+      }
+      color: $middle-gray;
+      text-align: right;
+      letter-spacing: -0.005em;
+    }
+    &:hover{
+      background-color: $light-gray;
+      *{
+        font : {
+          weight:bold;
+        }
+      }
+    }
+  }
+
+  @include res--mobile-up{
+    margin-top: rem(40);
+
+    .link-container{
+      padding:rem(30) rem(20);
+    }
+
+  }
+
+}
