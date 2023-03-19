@@ -55,7 +55,33 @@ let header = document.querySelector("header");
 //   },
 
 // }
+// var Init = {
+//   defaults: function () {
+//     this.resize();
+//     window.addEventListener("resize", this.resize);
+//   },
+//   resize: function () {
+//     Init.getBrowserSize();
+//     Init.drawBreakPoint();
 
+//     Init.breakpoint = window.matchMedia("(min-width:992px)").matches;
+//     if (!Init.breakpoint) {
+//       html.classList.remove("desktop");
+//       html.classList.add("mobile");
+//     } else {
+//       html.classList.remove("mobile");
+//       html.classList.add("desktop");
+//     }
+//   },
+//   getBrowserSize: function () {
+//     this.bodyHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
+//     this.bodyWidth = Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);
+//   },
+//   drawBreakPoint: function () {
+//     html.setAttribute("data-width", this.bodyWidth);
+//     html.setAttribute("data-height", this.bodyHeight);
+//   },
+// };
 
 var Menu = {
   menuButtonEl: document.querySelector('.menu-button'),
@@ -148,6 +174,8 @@ var Search = {
     this.filled();
     this.delete();
     this.close();
+
+    window.addEventListener("resize", this.filled);
   },
   open: function () {
     Search.searchInputEl.addEventListener("click", (evnet) => {
@@ -165,6 +193,7 @@ var Search = {
       // html.classList.remove('searching');
       if (!html.classList.contains('mobile')) {
         html.classList.remove('searching');
+        playScroll()
       }
     })
 
@@ -179,6 +208,10 @@ var Search = {
         searchArea.classList.remove("filled");
       }
     });
+    if (html.classList.contains('desktop') && html.classList.contains('searching')) {
+      html.classList.remove('searching');
+      playScroll()
+    }
   },
   delete: function () {
     Search.searchDeleteEl.addEventListener("click", function (event) {
@@ -212,57 +245,38 @@ var Category = {
     this.sticky();
   },
   toggle: function () {
-    if (window.matchMedia('miin-width: 992px').matches) {
-      Category.moreButtonEl.addEventListener("click", event => {
-        Category.moreButtonEl.classList.toggle('active');
-        if (Category.moreButtonEl.classList.contains("active")) {
-          Category.subCategoryWrapEl.classList.add("opend-category");
-        } else {
-          Category.subCategoryWrapEl.classList.remove("opend-category");
-        }
-      })
-    }
+    Category.moreButtonEl.addEventListener("click", () => {
+      Category.moreButtonEl.classList.toggle('active');
+      if (Category.moreButtonEl.classList.contains("active")) {
+        Category.subCategoryWrapEl.classList.add("opend-category");
+      } else {
+        Category.subCategoryWrapEl.classList.remove("opend-category");
+      }
+    })
   },
   sticky: function () {
     let headerHeight = header.offsetHeight;
-    let stickyEl = document.querySelector(".sticky-selector");
+    let stickyEl = document.querySelector(".category-sort-container");
     let topPos = window.pageYOffset + stickyEl.getBoundingClientRect().top;;
-    let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if (stickyEl !== null && window.innerWidth) {
+      const observer = new IntersectionObserver(
+        // let observer = new IntersectionObserver(callback, options);
+        //콜백 1번째 인수
+        ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
 
-    console.log(topPos);
-    // console.log(scrollTop);
+        //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
 
-    window.addEventListener('scroll', function () {
-      if (scrollTop == topPos) {
-        stickyEl.classList.add('sticked');
-      } else {
-        stickyEl.classList.remove('sticked');
-      }
+        // 아래 콜백의 옵션
+        {
+          threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
+          rootMargin: '-80px 0px 0px 0px' 
+        }
 
-    });
-
-    $(window).scroll(function () {
-      var scrT = $(window).scrollTop();
-      console.log(scrT); //스크롤 값 확인용
-      if (scrT = topPos) {
-        //스크롤이 끝에 도달했을때 실행될 이벤트
-        console.log(';asdf');
-        stickyEl.classList.add('sticked');
-      } else {
-        //아닐때 이벤트
-        stickyEl.classList.remove('sticked');
-      }
-    });
-    // $(window).scroll(function(){
-    //   var scrT = $(window).scrollTop();
-    //   console.log(scrT); //스크롤 값 확인용
-    //   if(scrT == $(document).height() - $(window).height()){
-    //     //스크롤이 끝에 도달했을때 실행될 이벤트
-    //   } else {
-    //     //아닐때 이벤트
-    //   }
-    // }
-  },
+        
+      );
+      observer.observe(stickyEl);
+    }
+  }
 }
 
 Menu.init();
@@ -290,14 +304,11 @@ function stopScroll() {
 // }
 
 function search() {
-  if (html.classList.contains('pc') && html.classList.contains('searching')) {
-    html.classList.remove('searching');
-    playScroll()
-  }
+
 }
 
 function deviceWidth() {
-  if (window.innerWidth <= 991) {
+  if (window.innerWidth <= 767) {
     html.classList.remove('desktop');
     html.classList.add('mobile');
 
@@ -322,7 +333,7 @@ function CheckValueLengh() {
 
 window.addEventListener("resize", () => {
   deviceWidth()
-  search()
+  // search()
 })
 
 document.addEventListener('DOMContentLoaded', function () {

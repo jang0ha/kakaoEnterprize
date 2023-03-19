@@ -1,0 +1,263 @@
+@use '../abstract/'as *;
+
+.footer {
+  margin-top: 0;
+  border-top: 1px solid $border-color;
+
+  .inner {
+    max-width: none;
+    align-items: flex-start
+  }
+
+  .util-wrap {
+    @include vstack(14);
+    align-items: flex-start;
+
+    strong {
+      font : {
+        size: rem(14);
+        weight: bold;
+      }
+    }
+
+    .info {
+      * {
+        font : {
+          size: rem(12);
+        }
+      }
+    }
+
+    nav {
+      margin-top: rem(26);
+    }
+  }
+
+  .sns-list {
+    @include hstack(12);
+  }
+
+  .footer-nav {
+    @include vstack(20);
+    transition: all 0.3s;
+
+    >li {
+      position: relative;
+      min-height: 32px;
+      >a {
+        font : {
+          weight: bold;
+        }
+      }
+    }
+    a,
+    button {
+      font : {
+        size: rem(14);
+      }
+
+      color:$gray;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+
+  .footer-layer {
+    @include card(0, 0);
+    position: absolute;
+    bottom: calc(100% + 5rem);
+    right: 0;
+    background-color: $white;
+    border-radius: $border-radius;
+
+    display: none;
+    .dep2 {
+      padding: rem(20);
+      padding: 20rem;
+      display: block;
+      width: max-content;
+      b {
+        color: $black;
+        display: block;
+        margin-bottom: rem(16);
+        font : {
+          size: rem(12)
+        }
+      }
+      a {
+        font : {
+          size: rem(12);
+        }
+
+        position: relative;
+        padding: rem(4) 0;
+        display: inline-block;
+
+        &::after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          background: $black;
+          width: 100%;
+          height: 1px;
+          -webkit-transform-origin: 100% 50%;
+          -ms-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+          -webkit-transform: scale3d(0, 1, 1);
+          transform: scale3d(0, 1, 1);
+          transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1), -webkit-transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        &:hover {
+          color: $black;
+
+          &::after {
+            -webkit-transform-origin: 0% 50%;
+            -ms-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+            -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+          }
+        }
+      }
+
+    }
+
+    &.family-site{
+      width: rem(420);
+      .dep2{
+        width: 100%;
+      }
+    }
+
+    @include res--mobile-up {
+      &.family-site{
+        width: rem(420);
+        .dep2{
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(3,auto);
+        }
+      }
+    }
+  }
+
+
+
+
+  @include res--laptop-up {
+    padding: rem(40) 0 rem(80) 0;
+
+    .inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .util-wrap{
+      .info{
+        max-width: 500rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8rem 14rem;
+    
+      }
+    }
+
+    .footer-nav {
+      flex-direction: row;
+      gap: rem(48);
+    }
+  }
+}
+
+
+
+.request-button {
+  @include hstack(8);
+  position: relative;
+  font : {
+    weight : bold;
+  }
+  &::after {
+    content: '';
+    background: svg-image(chevron, 666)no-repeat center;
+    width: rem(16);
+    height: rem(16);
+
+    transform: rotate(90deg);
+    transition: all 0.3s;
+    display: block;
+  }
+
+  &:hover{
+    &::after {
+      background: svg-image(chevron, 111) no-repeat center;
+    }
+  }
+
+  &.opened {
+    color:$black;
+    &::after {
+      transform: rotate(270deg);
+      background: svg-image(chevron, 111)no-repeat center;
+    }
+
+    &~.footer-layer {
+      display: block;
+    }
+  }
+}
+
+
+.family-site-button{
+  @include hstack(null);
+  background-color: $light-gray;
+  color:$middle-gray;
+  border-radius: 50px;
+  width: 100%;
+  height:57px;
+  transition: all 0.3s;
+  padding:rem(14) rem(24);
+  position: relative;
+  font : {
+    weight : bold;
+  }
+  &::after{
+    content: '';
+    background: svg-image(plus, 666)no-repeat center;
+    width: rem(14);
+    height: rem(14);
+    transition: all 0.3s;
+    position: absolute;
+    display: block;
+ 
+    right: 20px;
+  }
+  &:hover{
+    &::after {
+      background: svg-image(plus, 111)no-repeat center;
+    }
+  }
+  &.opened {
+    &::after {
+      transform: rotate(45deg);
+      background: svg-image(plus, 111)no-repeat center;
+    }
+
+    &~.footer-layer {
+      display: block;
+    }
+  }
+
+  @include res--mobile-up{
+    margin-left: rem(48);
+    width: rem(144);
+    height: 32px;
+    padding:0 rem(16);
+  }
+}

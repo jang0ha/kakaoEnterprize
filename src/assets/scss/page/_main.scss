@@ -1,39 +1,63 @@
 @use '../abstract/' as *;
 
 .suggestion-area{
-  text-align: center;
   margin-top: rem(30);
+  text-align: center;
   button{
     font : {
       size:rem(12);
     }
-    padding:rem(10) rem(16);
+    padding:rem(8) rem(12);
   }
-  p{
-    flex:1 0  100%;
-    width: 100%;
-    margin-bottom: rem(10);
-    
+  .suggestion-keyword{
+    p{
+      font : {
+        size: rem(12);
+        weight:bold;
+      }
+    }
+  
   }
 
   .suggestion-keyword{
     @include hstack(10);
     max-width: none;
     flex-wrap: wrap;
-    justify-content: center;
-    p{font-weight: bold;}
     @include res--mobile-up{
       margin-top: rem(40);
       max-width: 70%;
       margin:auto;
-      justify-content: flex-start;
-      
       gap: rem(12);
       p{
         flex:none;
         width: auto;
       }
     }
+
+  }
+}
+
+.request-link{
+  display: grid;
+  grid-template-columns: auto;
+  gap: rem(12);
+  transition: all 0.3s;
+  a{
+    @include hstack(null);
+    @include card(20, 30);
+    justify-content: space-between;
+    width: 100%;
+  }
+  span{
+    font : {
+      size: rem(14);
+      weight:bold;
+    }
+  }
+
+  @include res--mobile-up{
+    grid-template-columns: repeat(3, auto);
+    gap: rem(24);
   }
 }
 

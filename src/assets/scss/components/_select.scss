@@ -16,13 +16,13 @@
   height: rem(56);
   border:1px solid $dark-gray;
   border-radius: $border-radius-lg;
-  padding: rem(5) rem(15);
-  
+  padding: rem(5) rem(50) rem(5) rem(15);
+  transition: margin-top 0.2s;
   &::before{
     content: '';
     position: absolute;
     top: 50%;
-    right: 20px;
+    right: rem(20);
     background-image: svg-image(chevron);
     background-position: center;
     background-size: contain;
@@ -47,6 +47,7 @@
   }
   .contents-wrap &{
     width: 100%;
+    // margin-top: rem(12);
   }
   @include res--mobile-up{
     height: $search-height;
@@ -60,7 +61,6 @@
       border:  1px  solid  $border-color;
       width: rem(150);
       flex: 0 0 rem(150);
-  
     }
   }
 

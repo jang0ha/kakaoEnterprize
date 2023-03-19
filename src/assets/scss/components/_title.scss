@@ -1,5 +1,6 @@
 @use '../abstract/functions' as func;
 @use '../abstract/mixins' as mix;
+@use '../abstract/mediaQuery' as break;
 
 .main-title{
   font : {
@@ -7,17 +8,17 @@
     weight:bold;
   }
   text-align: center;
+
 }
 
 .title-header-wrap{
-  @include mix.hstack(10);
+  @include mix.hstack(20);
   margin-bottom: func.rem(20);
   h2{
     
     font : {
-      size: rem(18);
+      size: func.rem(18);
       weight:bold;
     }
   }
-
 }

@@ -4,13 +4,13 @@
 
 //컨텐츠 리스트
 .list-link-wrap {
-  margin-top: rem(20);
+  // margin-top: rem(20);
 
   li{
     border-bottom: 1px solid $border-color;
   }
   .link-container {
-    @include hstack(20);
+    @include hstack(10);
     align-items: flex-start;
     padding: rem(30) 0;
     width: 100%;
@@ -28,11 +28,11 @@
     .link-bullets{
       min-width: rem(20);
     }
-    .link-name{
+    .link-title{
       @include ellipsis(2);
       flex-grow: 1;
       font : {
-        size: rem(18);
+        size: rem(14);
         weight: 400;
       }
     }
@@ -54,11 +54,16 @@
     }
   }
 
-  @include res--mobile-up{
+  @include res--tablet-up{
     margin-top: rem(40);
-
+    gap: rem(20);
     .link-container{
       padding:rem(30) rem(20);
+      .link-title{
+        font : {
+          size: rem(18);
+        }
+      }
     }
 
   }

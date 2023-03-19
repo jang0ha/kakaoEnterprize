@@ -1,53 +1,56 @@
 @use '../abstract/mixins' as mix;
+@use '../abstract/functions' as func;
 
-$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, yes, no, onebyone, web-chat, member, non-membern, phone, arrow-right, history-back;
+$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, yes, no, onebyone, web-chat, member, non-membern, phone, arrow-right, history-back, ch, facebook, instagram, youtube;
 .icon{
 
   @each $value in $images{
     //기본아이콘
     &-#{$value}{
       @include mix.bg-url ("icon-#{$value}");
-      width: 24rem;
-      height: 24rem;
+      width: func.rem(24);
+      height: func.rem(24);
     }
     //타이틀 아이콘
     &-title-#{$value}{
       @include mix.bg-url ("icon-title-#{$value}");
-      width: 48rem;
-      height: 48rem;
+      width:func.rem(48);;
+      height: func.rem(48);
     }
+
+    //sns 아이콘{
+      &-sns-#{$value}{
+        @include mix.bg-url ("icon-sns-#{$value}");
+        width: func.rem(26);
+        height: func.rem(26);
+        background-color: #777;
+        transition : background-color 0.3s;
+        &:hover{
+          background-color: #111;
+        }
+        border-radius: 50%
+      }
 
     //페이지네이션 아이콘
     &-pagination-#{$value}{
       @include mix.bg-url ("icon-pagination-#{$value}");
-      width: 22rem;
-      height: 22rem;
+      width: func.rem(22);
+      height: func.rem(22);
     }
 
     //평가 아이콘
     &-evaluation-#{$value}{
       @include mix.bg-url ("icon-evaluation-#{$value}");
-      width: 24rem;
-      height: 24rem;
+      width: func.rem(24);
+      height: func.rem(24);
     }
 
     //문의하기 아이콘
     &-request-#{$value}{
       @include mix.bg-url ("icon-request-#{$value}");
-      width: 80rem;
-      height: 80rem;
+      width: func.rem(80);
+      height: func.rem(80);
     }
 
-    &-arrow-#{$value}{
-      @include mix.bg-url ("icon-arrow-#{$value}");
-      width: 20rem;
-      height: 20rem;
-    }
-
-    &-arrow-#{$value}{
-      @include mix.bg-url ("icon-arrow-#{$value}");
-      width: 20rem;
-      height: 20rem;
-    }
   }
 }

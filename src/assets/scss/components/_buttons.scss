@@ -173,7 +173,7 @@ $_hover-color:111;
 
 
 // 카테고리 버튼
-.category-button {
+.nav-link {
   @include button();
 
   background-color: $light-gray;
@@ -199,14 +199,14 @@ $_hover-color:111;
 .category-toggle-button{
   display: none;
   
-  @include res--mobile-up {
+  @include res--tablet-up {
     width: rem(20);
     height: rem(20);
     border-radius: 50%;
     background-color: $black;
     position: relative;
     display: block;
-    transform: translateY(59%);
+    transform: translateY(118%);
     &::after{
       content: '';
       width: rem(8);
@@ -220,8 +220,10 @@ $_hover-color:111;
       transition: all 0.3s;
     }
     &.active{
+      background-color: $primary;
       &::after {
         transform: translate(-50%, -50%) rotate(270deg);
+        background: svg-image(arrow-right, 111)no-repeat center;
       }
     }
   }

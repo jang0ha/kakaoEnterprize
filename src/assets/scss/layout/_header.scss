@@ -33,6 +33,10 @@
     background-color: $black;
     border-color: $black;
   }
+
+  &.hide-header{
+    top:-#{$header-height};
+  }
 }
 
 .menu-button {

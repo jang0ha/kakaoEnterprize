@@ -1,5 +1,6 @@
 @use 'functions' as *;
 @use 'variables' as *;
+
 /*믹스인*/
 
 // 플렉스 / 가로
@@ -151,4 +152,12 @@ $path-image : '../images/';
 	-webkit-border-radius: $border;
 	-moz-border-radius: $border;
 	border-radius: $border;
+}
+
+
+// 카드 형태 단위
+@mixin card($paddiing-y, $paddiing-x){
+  border: 1rem solid $border-color;
+  border-radius: $border-radius-md;
+  padding : #{$paddiing-y}rem #{$paddiing-x}rem;
 }

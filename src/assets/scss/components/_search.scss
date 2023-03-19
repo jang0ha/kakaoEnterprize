@@ -56,9 +56,12 @@
   height: calc(100vh - calc($header-height + $search-height-lg + rem(40)));
   display: none;
   li{
-    padding:rem(8);
+    padding:rem(12);
     &+li{
       margin-top: rem(5);
+    }
+    a{
+      width: 100%;
     }
     &:hover{
       background-color: $light-gray;
@@ -125,11 +128,14 @@
   left: 0;
   padding:rem(15);
   display: none;
-  h5{
+  p{
     margin-bottom: rem(10);
     color:$dark-gray;
   }
-  
+  a{
+    padding:rem(5);
+    width: 100%;
+  }
 }
 
 .search-wrap {
@@ -182,7 +188,7 @@
   border-radius: $border-radius-lg;
   padding: rem(5) rem(10);
   height: $search-height-lg;
-
+  // transition: all  0.2s;
   @include res--mobile-up{
     flex:1;
     border: 0;

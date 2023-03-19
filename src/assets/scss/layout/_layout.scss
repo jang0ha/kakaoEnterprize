@@ -1,24 +1,12 @@
-// html{
-//   font-size: 0.0625em;
-//   height: 100%;
-// }
+@use '../abstract/' as *;
 
 
-
-// body{
-//   display: flex;flex-direction: column;min-height: 100vh;
-//   .open-allmenu &{
-//     overflow: hidden;height: 100%;width: 100%;
-//   }
-// }
-
-// main{
-//   flex-grow: 1;
-//   transition: padding 0.3s;
-//   padding-bottom: 200px;
-// }
-
-// .container{
-//   max-width: 1240px;
-//   padding: 0 20px;
-// }
+#wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main{
+  padding-bottom:rem(40);
+  flex: 1;
+}
