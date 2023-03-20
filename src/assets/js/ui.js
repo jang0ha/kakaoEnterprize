@@ -91,7 +91,7 @@ var Menu = {
 
   click: function () {
     Menu.menuButtonEl.addEventListener('click', (event) => {
-      event.stopPropagation(); // 이벤트 버블링 정지!
+      event.stopPropagation(); 
       body.classList.toggle("open-menu");
       if (body.classList.contains('open-menu')) {
         stopScroll();

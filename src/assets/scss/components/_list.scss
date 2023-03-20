@@ -4,8 +4,6 @@
 
 //컨텐츠 리스트
 .list-link-wrap {
-  // margin-top: rem(20);
-
   li{
     border-bottom: 1px solid $border-color;
   }
@@ -55,7 +53,7 @@
   }
 
   @include res--tablet-up{
-    margin-top: rem(40);
+    margin-top: rem(20);
     gap: rem(20);
     .link-container{
       padding:rem(30) rem(20);
