@@ -5,14 +5,20 @@
   border-top: 1px solid $border-color;
 
   .inner {
+    display: flex; 
+    flex-direction: column-reverse;
     max-width: none;
-    align-items: flex-start
+    align-items: flex-start;
+    >nav{
+      width: 100%;
+    }
   }
 
   .util-wrap {
     @include vstack(14);
     align-items: flex-start;
-
+    margin-top: rem(20);
+    flex-direction: column-reverse;
     strong {
       font : {
         size: rem(14);
@@ -25,6 +31,7 @@
         font : {
           size: rem(12);
         }
+        line-height: 2;
       }
     }
 
@@ -40,13 +47,19 @@
   .footer-nav {
     @include vstack(20);
     transition: all 0.3s;
-
+    align-items: flex-start;
+    width: 100%;
     >li {
+      @include hstack(null);
       position: relative;
-      min-height: 32px;
+      min-height: 24px;
+      width: 100%;
       >a {
         font : {
           weight: bold;
+        }
+        >b{
+          color:$black;
         }
       }
     }
@@ -71,13 +84,14 @@
     right: 0;
     background-color: $white;
     border-radius: $border-radius;
-
+    width: 100%;
     display: none;
     .dep2 {
       padding: rem(20);
       padding: 20rem;
       display: block;
-      width: max-content;
+      width: 100%;
+  
       b {
         color: $black;
         display: block;
@@ -128,19 +142,33 @@
     }
 
     &.family-site{
-      width: rem(420);
-      .dep2{
+      width: 100%;
+      >.dep2{
         width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+        >li{
+          &:nth-child(3){
+            margin-top: rem(30);
+          }
+        }
       }
     }
 
     @include res--mobile-up {
+      width: auto;
+      .dep2{
+        width: max-content;
+      }
       &.family-site{
         width: rem(420);
         .dep2{
-          width: 100%;
-          display: grid;
-          grid-template-columns: repeat(3,auto);
+          grid-template-columns: repeat(3,1fr);
+          >li{
+            &:nth-child(3){
+              margin-top: rem(0);
+            }
+          }
         }
       }
     }
@@ -153,12 +181,18 @@
     padding: rem(40) 0 rem(80) 0;
 
     .inner {
-      display: flex;
+      flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
+      >nav {
+        flex: none;
+        width: fit-content;
+      }
     }
 
     .util-wrap{
+      margin-top: 0;
+      flex-direction: column;
       .info{
         max-width: 500rem;
         display: flex;
@@ -171,6 +205,11 @@
     .footer-nav {
       flex-direction: row;
       gap: rem(48);
+      >li{
+        min-height: 32px;
+        flex: none;
+        width: auto;
+      }
     }
   }
 }
@@ -230,8 +269,8 @@
   &::after{
     content: '';
     background: svg-image(plus, 666)no-repeat center;
-    width: rem(14);
-    height: rem(14);
+    width: 14px;
+    height: 14px;
     transition: all 0.3s;
     position: absolute;
     display: block;
@@ -254,8 +293,8 @@
     }
   }
 
-  @include res--mobile-up{
-    margin-left: rem(48);
+  @include res--laptop-up{
+    margin-left: rem(12);
     width: rem(144);
     height: 32px;
     padding:0 rem(16);

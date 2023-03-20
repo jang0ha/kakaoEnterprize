@@ -245,20 +245,22 @@ var Category = {
     this.sticky();
   },
   toggle: function () {
-    Category.moreButtonEl.addEventListener("click", () => {
-      Category.moreButtonEl.classList.toggle('active');
-      if (Category.moreButtonEl.classList.contains("active")) {
-        Category.subCategoryWrapEl.classList.add("opend-category");
-      } else {
-        Category.subCategoryWrapEl.classList.remove("opend-category");
-      }
-    })
+    if (Category.moreButtonEl !== null) {
+      Category.moreButtonEl.addEventListener("click", () => {
+        Category.moreButtonEl.classList.toggle('active');
+        if (Category.moreButtonEl.classList.contains("active")) {
+          Category.subCategoryWrapEl.classList.add("opend-category");
+        } else {
+          Category.subCategoryWrapEl.classList.remove("opend-category");
+        }
+      })
+    }
   },
   sticky: function () {
     let headerHeight = header.offsetHeight;
     let stickyEl = document.querySelector(".category-sort-container");
     let topPos = window.pageYOffset + stickyEl.getBoundingClientRect().top;;
-    if (stickyEl !== null && window.innerWidth) {
+    if (stickyEl !== null && window.innerWidth < 767) {
       const observer = new IntersectionObserver(
         // let observer = new IntersectionObserver(callback, options);
         //콜백 1번째 인수
@@ -279,10 +281,42 @@ var Category = {
   }
 }
 
+
+var Footer = {
+  footerEl : document.querySelector(".footer"),
+  
+  init: function () {
+    this.openLayer();
+  },
+  openLayer: function() {
+    let toggleButtonEls = Footer.footerEl.querySelectorAll(".nav-toggle-button");
+    toggleButtonEls.forEach(button => { 
+      button.addEventListener("click", function (event) {
+        event.stopPropagation();
+        if (this.classList.contains("opened")) {
+          //이미 클릭되서 클래스를 가질경우
+          button.classList.remove("opened");
+        } else {
+          //처음일경우
+          toggleButtonEls.forEach(buttonel => buttonel.classList.remove("opened")); //배열로 다시만들어서 처음 제거, 
+          button.classList.add("opened"); //그다음 클래스 추가
+        }
+      })
+    })
+
+    window.addEventListener("click", (event) => {
+      toggleButtonEls.forEach(button => button.classList.remove("opened"));
+    })
+
+  }
+}
+
+
 Menu.init();
 Select.init();
 Search.init();
 Category.init();
+Footer.init();
 
 // --------------------------------------------------------
 // 함수 형태로 형태로 만들기
