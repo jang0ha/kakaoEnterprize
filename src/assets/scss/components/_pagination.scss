@@ -1,0 +1,78 @@
+@use '../abstract/'as *;
+
+//페이지네이션
+.pagination {
+  margin: 0;
+}
+
+.pagination-wrap {
+  @include hstack(null);
+  margin-top: rem(40);
+  justify-content: center;
+  width: 100%;
+
+  .navigation{
+    display: none;
+  }
+
+  @include res--mobile-up{
+    .navigation {
+      @include hstack(20);
+  
+      .before-pagination,
+      .after-pagination {
+        @include hstack(4);
+  
+        .page-item {
+          @include hstack(4);
+          justify-content: center;
+          width: rem(22);
+          height: rem(22);
+          .page-link {
+            width: 100%;
+            height: 100%;
+            border:1px solid $border-color;
+            &:hover {
+              border-color: $primary;
+              background-color: $primary;
+            }
+          }
+        }
+      }
+  
+      .paging {
+        @include hstack(10);
+  
+        .page-link {
+          width: 32rem;
+          height: 32rem;
+          font-weight: 700;
+          font-size: 14rem;
+        }
+      }
+  
+      .page-link {
+        @include hstack(null);
+        transition: all 0.3s;
+        text-decoration: none;
+        border-radius: 50%;
+        justify-content: center;
+        color: $dark-gray !important;
+  
+        &:hover {
+          background-color: $middle-gray;
+        }
+  
+        &.active {
+          background-color: $primary;
+          ;
+        }
+      }
+    }
+
+    .more-button{
+      display: none;
+    }
+  
+  }
+}

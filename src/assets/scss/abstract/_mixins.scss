@@ -68,7 +68,6 @@ $path-image : '../images/';
   @include rounded($border-radius-lg);
 	border-color: transparent;
 	padding: rem(10) rem(24);
-	outline: none;
 	cursor: pointer;
 	text-decoration: none;
   font : {
@@ -120,6 +119,7 @@ $path-image : '../images/';
     // background:lighten($background, 10%);
     // border-color: lighten($background, 13%);
 	}
+  &:focus{}
 }
 
 @mixin button-outline-variant(

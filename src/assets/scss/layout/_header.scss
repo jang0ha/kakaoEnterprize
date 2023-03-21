@@ -176,8 +176,6 @@
     }
 
     .key-button {
-      height: rem(20);
-
       i {
         width: rem(22);
         height: rem(22);
@@ -186,18 +184,80 @@
 
     .dep1 {
       padding: rem(10) rem(20);
+      >li {
+        >a {
+          padding: rem(30) 0;
+          color: $white;
+          width: 100%;
+        }
+        &+li {
+          >a{
+            border-top: 1rem solid $dark-gray;
+          }
+        }
+      }
+    }
 
-      li {
+    .has-treeview{
+      position: relative;
+      >a{
+        position: relative;
+        display: block;
         padding: rem(30) 0;
 
-        a {
-          color: $white;
+        &::after{
+          content: '';
+          background: svg-image(arrow-right, fff) no-repeat center;
+          transform: translateY(-50%) rotate(90deg);
+          transition: all 0.3s;
+          position: absolute;
+          top: 50%;
+          right: rem(20);
+          width: rem(14);
+          height: rem(14);
+          display: block;
+          background-size: contain;
         }
-
       }
 
-      li+li {
-        border-top: 1rem solid $dark-gray;
+      .dep2 {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 3;
+        height:0;
+        transition: height 0.3s  opacity 0.3s;
+        font : { 
+          size:rem(14);
+        }
+        a{
+          font : {
+            size: rem(14);
+          }
+          padding: rem(20);
+          display: block;
+          white-space: nowrap;
+          color: #666;
+          transition: color .3s;
+          &:hover, &:focus{
+            font : {
+              weight:bold;
+            }
+          }
+        }
+      }
+      &.is-visible{
+        >a{
+          &::after{
+            transform: rotate(270deg);
+          }
+        }
+       
+        .dep2{
+          opacity: 1;
+          visibility: visible;
+          height: 100%;
+          border-top: 1rem solid $dark-gray;
+        }
       }
     }
   }
@@ -210,10 +270,80 @@
 
     .dep1 {
       @include hstack(20);
+      >li{
+        >a {
+          font : {
+            weight: bold;
+          }
+        }
+      }
+    }
 
-      a {
-        font : {
-          weight: bold;
+    .has-treeview{
+      @include hstack(null);
+      height: 100%;
+      height: $header-height-lg;
+      position: relative;
+      &::before{
+        content: '';
+        height: 2px;
+        bottom: 1px;
+        transition: background .15s;
+        background: transparent;
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+      }
+      >a{
+        &::after{
+          display: none;
+        }
+      }
+      .dep2 {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        padding-top: rem(10);
+        top:$header-height-lg ;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        cursor: pointer;
+        height:0;
+        transition: height 0.3s  opacity 0.3s;
+        font : { 
+          size:rem(14);
+        }
+        ul{
+          @include card(20, 0);
+          border-radius: 5px;
+          box-shadow: $box-shadow-lg;
+          background-color: $white;
+        }
+        a{
+          font : {
+            size: rem(14);
+          }
+          padding: 5px 30px;
+          display: block;
+          white-space: nowrap;
+          color: #666;
+          transition: color .3s;
+          &:hover, &:focus{
+            font : {
+              weight:bold;
+            }
+          }
+        }
+      }
+      &:hover, &.is-visible{
+        &::before{
+          background-color: $black;
+        }
+        .dep2{
+          opacity: 1;
+          visibility: visible;
+          height: 100%;
         }
       }
     }
@@ -223,11 +353,11 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+
+  
   }
 
-  .dep2 {
-    display: none;
-  }
+  
 }
 
 // 공지배너

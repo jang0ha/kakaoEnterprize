@@ -206,7 +206,7 @@ $_hover-color:111;
     background-color: $black;
     position: relative;
     display: block;
-    transform: translateY(118%);
+    transform: translateY(160%);
     &::after{
       content: '';
       width: rem(8);
@@ -242,4 +242,8 @@ $_hover-color:111;
     &:hover{
       background-color: $light-gray;
     }
+}
+
+button:focus{
+  outline: auto;
 }

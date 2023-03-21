@@ -21,7 +21,7 @@
     }
   }
   .link-container {
-    @include hstack(10);
+    @include hstack(16);
     // align-items: flex-start;
     width: 100%;
     .link-bullets, .link-assistant{
@@ -35,7 +35,12 @@
       }
     }
     .link-bullets{
-      min-width: rem(20);
+      justify-content: center;
+      font : {
+        weight:bold;
+      }
+      max-width: rem(34);
+      width: 100%;
     }
     .link-title{
       @include ellipsis(1);
@@ -94,6 +99,12 @@
       >a {
         @include vstack(10);
         align-items: flex-start;
+      }
+    }
+    .link-container {
+      .link-bullets{
+        max-width: none;
+        width: auto;
       }
     }
   }

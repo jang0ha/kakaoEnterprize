@@ -56,10 +56,9 @@
   height: calc(100vh - calc($header-height + $search-height-lg + rem(40)));
   display: none;
   li{
-    padding:rem(12);
-    &+li{
-      margin-top: rem(5);
-    }
+    padding:rem(16);
+    width: 100%;
+    display: block;
     a{
       width: 100%;
     }
@@ -72,6 +71,7 @@
     .search-recommend{
       opacity: 0;
       visibility: hidden;
+      display: none;
     }
     .search-result{
       opacity: 1;
@@ -96,6 +96,7 @@
 
 }
 .search-recommend{
+  width: 100%;
   .search-faq {
     @include hstack(10);
     align-items: flex-start;
@@ -123,11 +124,12 @@
 
 
 .search-result{
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   padding:rem(15);
   display: none;
+  width: 100%;
   p{
     margin-bottom: rem(10);
     color:$dark-gray;

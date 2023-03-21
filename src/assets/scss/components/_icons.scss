@@ -1,7 +1,7 @@
 @use '../abstract/mixins' as mix;
 @use '../abstract/functions' as func;
 
-$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, yes, no, onebyone, web-chat, member, non-membern, phone, arrow-right, history-back, ch, facebook, instagram, youtube;
+$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, pin, arrow-right, history-back, ch, facebook, instagram, youtube;
 .icon{
 
   @each $value in $images{
@@ -34,8 +34,8 @@ $images : alarm, clear-button, search, comment, declaration, document, question,
     //페이지네이션 아이콘
     &-pagination-#{$value}{
       @include mix.bg-url ("icon-pagination-#{$value}");
-      width: func.rem(22);
-      height: func.rem(22);
+      width: func.rem(14);
+      height: func.rem(14);
     }
 
     //평가 아이콘

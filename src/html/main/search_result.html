@@ -130,13 +130,12 @@
       <section class="search-result-section">
         <div class="inner">
           <div class="title-header-wrap">
-            <i class="icon-title-search-result"></i>
+            <i class="icon-title-comment"></i>
             <h2>“계정”에 대한 결과 <span>(총 100 건)</span></h2>
           </div>
 
 
           <div class="contents-wrap">
-
             <!-- [공통]@@ 기본) 구조 그대로 필요한 부분만 넣고 쓰면 됨 -->
             <div class="category-sort-wrap ">
               <div class="category-sort-container">
@@ -145,23 +144,6 @@
                   <button type="button" class="nav-link primary">카카오워크</button>
                   <button type="button" class="nav-link primary">카카오 i 라스</button>
                 </nav>
-                <!-- <div class="category-sub-list-wrap">
-                            <nav class="category-sub-list" role="tablist">
-                              <a href="javascript:;" class="nav-link secondary active">전체</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Networking</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Container Pack</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Container Pack</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Storage</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Developer Tools</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Developer Tools</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">AI Service</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Security</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">Hybrid Cloud</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">OCR</a>
-                              <a href="javascript:;" class="nav-link secondary" role="tab">NLP</a>
-                            </nav>
-                            <button type="button" class="category-toggle-button" aria-label="더보기"></button>
-                          </div> -->
               </div>
               <select name="" id="list_order" class="hidden-select">
                 <option value="1">최신 순</option>
@@ -193,8 +175,9 @@
                 </a>
               </li>
             </ul>
-          </div>
 
+            @@include("@@webRoot/html/_include/_pagination.html")
+          </div>
         </div>
       </section>
       <!-- 검색결과 섹션  끝-->

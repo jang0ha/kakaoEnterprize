@@ -4,7 +4,7 @@
 
 .main-title{
   font : {
-    size:func.rem(26);
+    size:func.rem(32);
     weight:bold;
   }
   text-align: center;
@@ -12,7 +12,7 @@
 }
 
 .title-header-wrap{
-  @include mix.hstack(20);
+  @include mix.hstack(8);
   margin-bottom: func.rem(20);
   h2{
     

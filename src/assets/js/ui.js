@@ -83,6 +83,56 @@ let header = document.querySelector("header");
 //   },
 // };
 
+var Gnb = {
+  gnbListAnchorEl: document.querySelectorAll(".gnb .has-treeview > a"),
+  gnblistEl: document.querySelector('.gnb .dep1>li:not(.has-treeview) > a'),
+  // gnbListAnchorElName: document.querySelector
+  init: function () {
+    // this.focus();
+    if (window.matchMedia("(max-width:768px)").matches) { //desktop
+      this.click();
+    } else {
+       this.focus();
+    }
+  },
+  focus: function () {
+    Gnb.gnbListAnchorEl.forEach((item) => {
+      item.addEventListener("focus", function (e) {
+        e.preventDefault();
+        Gnb.gnbListAnchorEl.forEach((item) => {
+          item.parentNode.classList.remove("is-visible");
+        });
+        this.parentNode.classList.toggle("is-visible");
+      });
+    });
+
+    Gnb.gnblistEl.addEventListener("focus", function (e) { 
+      Gnb.gnbListAnchorEl.forEach(buttonel => buttonel.parentNode.classList.remove("is-visible"));
+    });
+
+    console.log(Gnb.gnblistEl)
+  },
+
+
+  click: function () {
+    Gnb.gnbListAnchorEl.forEach((item) => {
+      item.addEventListener("click", function (e) {
+        e.preventDefault();
+        Gnb.gnbListAnchorEl.forEach((item) => {
+          item.parentNode.classList.remove("is-visible");
+        });
+        this.parentNode.classList.toggle("is-visible");
+      });
+    })
+
+    Gnb.gnblistEl.addEventListener("click", function (e) { 
+      Gnb.gnbListAnchorEl.forEach(buttonel => buttonel.parentNode.classList.remove("is-visible"));
+    });
+
+  }
+
+}
+
 var Menu = {
   menuButtonEl: document.querySelector('.menu-button'),
   init: function () {
@@ -131,13 +181,13 @@ var Select = {
       $(this).before(wrapper);
       var $custom = $(".custom-select__" + _id);
       $custom.append(input);
-      $custom.append("<div class='custom-options custom-options-" + _id + "'></div>");
+      $custom.append("<div class='custom-options custom-options-" + _id + "' ></div>");
       var $custom_input = $("#custom-select__" + _id);
       var $ops_list = $(".custom-options-" + _id);
       var $ops = $(this)[0].options;
       for (var i = 0; i < $ops.length; i++) {
         $ops_list.append(
-          "<div data-value='" +
+          "<div tabindex='0' data-value='" +
           $ops[i].value +
           "'>" +
           $ops[i].innerText +
@@ -145,7 +195,7 @@ var Select = {
         );
       }
 
-      $custom_input.click(function () {
+      $custom_input.on("focus", function () {
         $custom.toggleClass("active");
       });
       $custom_input.blur(function () {
@@ -311,7 +361,7 @@ var Footer = {
   }
 }
 
-
+Gnb.init();
 Menu.init();
 Select.init();
 Search.init();

@@ -63,7 +63,7 @@
   >* {
     &:only-child {
       display: block;
-      width: 110%;
+      // width: 110%;
 
       > * {
         max-width: none;
@@ -114,14 +114,18 @@
 
     >* {
       &:only-child {
-        max-width: none !important;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-
+     
         >* {
+
+          &:only-child {
+            max-width: none !important;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+    
+          }
           max-width: none;
-          justify-content: center;
+          // justify-content: center;
           padding:0;
         }
       }
@@ -138,14 +142,14 @@
       }
       .category-sub-list{
 
-        height: auto;
+        height: rem(46);
         overflow: hidden;
         flex: 1;
         transition: all 0.3s;
         margin-top: rem(20);
-
+        
         &.opend-category {
-          height: rem(94);
+          height: auto;
           // overflow: visible;
         }
       }
@@ -163,7 +167,7 @@
   @include res--tablet-up{
     .category-sort-container {
       .category-sub-list{
-        height: fit-content;
+        height: rem(46);
       }
     }
   }
@@ -191,7 +195,7 @@
 }
 
 // 컨텐츠 박스 하단에 들어가는 버튼
-.contents-btn-wrap {
+.contents-btn-wrap, .pagination-wrap {
   text-align: center;
   margin-top: rem(40);
   transition: all 0.3s;
