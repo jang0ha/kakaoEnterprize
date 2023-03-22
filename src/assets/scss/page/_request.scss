@@ -1,0 +1,85 @@
+@use '../abstract/'as *;
+
+.request-section{
+  margin-bottom: 0;
+}
+.privacy-wrap {
+  clear: both;
+  width: 100%;
+
+  .table-wrap {
+    margin: 40px 0;
+  }
+
+  .title {
+    font : {
+      size: rem(18);
+      weight: bold;
+    }
+
+    line-height: 27px;
+    letter-spacing: -0.005em;
+    color: $black;
+    ;
+    margin-bottom: 10px;
+  }
+
+  .desc {
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  @include res--mobile-up{
+    @include card(40, 40);
+    border-radius: $border-radius;
+  }
+
+}
+
+.agree-wrap{
+  width: 100%;
+  padding: rem(14) rem(20);
+  background-color: $light-yellow;
+  border-radius: $border-radius-sm;
+  margin-top: rem(20);
+  .form-check{
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+
+
+.request-form{
+
+  display: flex;
+  flex-wrap: wrap;
+
+  > *{
+    flex: none;
+    width: 100%;
+  }
+  .form-field {
+    &:nth-of-type(1),
+    &:nth-of-type(2),
+    &:nth-of-type(3){
+      width:100%;
+    }
+  }
+  
+
+  @include res--mobile-up{
+    .form-field {
+      &:nth-of-type(1),
+      &:nth-of-type(2),
+      &:nth-of-type(3){
+        width: calc(100% /2 - rem(24));
+      }
+      &:nth-of-type(2){
+  
+        margin-top: 0;
+        margin-left: auto;
+      }
+    }
+  }
+}

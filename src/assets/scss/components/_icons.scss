@@ -1,7 +1,7 @@
 @use '../abstract/mixins' as mix;
 @use '../abstract/functions' as func;
 
-$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, pin, arrow-right, history-back, ch, facebook, instagram, youtube;
+$images : alarm, clear-button, search, comment, declaration, document, question, service, search-result, link, help, first, prev, next, last, pin, arrow-right, history-back, ch, facebook, instagram, youtube, clip;
 .icon{
 
   @each $value in $images{

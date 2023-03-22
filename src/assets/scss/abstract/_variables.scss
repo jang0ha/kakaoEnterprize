@@ -42,6 +42,8 @@ $search-height-lg: 56rem;
 
 $box-shadow : 0 0.5rem 11rem 0px rgb(0 0 0 / 4%) !important;
 $box-shadow-lg :0px 10px 30px rgba(0, 0, 0, 0.1) !important;
+
+$border-radius-sm:4rem;
 $border-radius:10rem;
 $border-radius-md: 20rem;
 $border-radius-lg: 50rem;
@@ -65,3 +67,8 @@ $btn-active-bg-shade-amount:      20% !default;
 $btn-active-bg-tint-amount:       20% !default;
 $btn-active-border-shade-amount:  10% !default;
 $btn-active-border-tint-amount:   10% !default;
+
+
+$input-types : (
+  "checkbox", "radio"
+)

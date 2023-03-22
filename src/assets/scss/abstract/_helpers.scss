@@ -36,8 +36,12 @@
 
 .d-md-none {
   @include res--mobile-up {
-    display: none;
+    display: none!important;
   }
+}
+
+.d-none{
+  display: none!important;
 }
 
 
@@ -195,7 +199,7 @@
 }
 
 // 컨텐츠 박스 하단에 들어가는 버튼
-.contents-btn-wrap, .pagination-wrap {
+%contents-btn-wrap{
   text-align: center;
   margin-top: rem(40);
   transition: all 0.3s;
@@ -218,6 +222,10 @@
 
     }
   }
+}
+
+.contents-btn-wrap{
+  @extend %contents-btn-wrap;
 }
 
 .sticky-selector{
@@ -246,3 +254,5 @@
     box-shadow: none;
   }
 }
+
+

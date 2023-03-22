@@ -1,101 +1,26 @@
 // gsap 플러그인 전역 등록 ()
 gsap.registerPlugin(ScrollTrigger);
 
-$(document).ready(function () {
-  var agent = navigator.userAgent.toLowerCase(); // 브라우저 체크
-  // var platform = navigator.platform.toLowerCase();
-  if (agent.indexOf(navigator.platform.toLowerCase()) > 0) { //모바일로 접속
-    console.log('asdf');
-  } else {
-    if (navigator.appName == 'Netscape' && agent.indexOf('trident') != -1 || agent.indexOf("msie") != -1) {
-      $('html').addClass('br-ie');
-      console.llog
-    } else if (agent.indexOf("chrome") != -1) {
-      if (agent.indexOf("edge") != -1 || agent.indexOf("edg") != -1) {
-        $('html').addClass('br-edge');
-      } else {
-        $('html').addClass('br-ch');
-
-        if (agent.indexOf("windows") != -1 || agent.indexOf("android") != -1 && platform.indexOf("mac") == -1) {
-          $('html').addClass('br-win-ch');
-        }
-      }
-    } else if (agent.indexOf("safari") != -1 && !(agent.indexOf("chrome") != -1)) {
-      $('html').addClass('br-safari');
-    }
-  }
-
-
-});
-
-// var isMobile = false;
-// function isMobile(){
-//   return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-// }
-
-
-
 
 let html = document.querySelector("html");
 let body = document.querySelector("body");
 let header = document.querySelector("header");
 
 
-// var Gnb = {
-//   gnbEl: document.querySelector('.gnb'),
-//   menuButtonEl: document.querySelector('.menu-button'),
-//   init: function () {
-//     this.click();
-//   },
-//   click: function () {
-//     menuButtonEl.addEventListenr(event)=> {
-//   event.stopPropagation();
-//   body.classList.toggle('open-menu');
-//     }
-//   },
-
-// }
-// var Init = {
-//   defaults: function () {
-//     this.resize();
-//     window.addEventListener("resize", this.resize);
-//   },
-//   resize: function () {
-//     Init.getBrowserSize();
-//     Init.drawBreakPoint();
-
-//     Init.breakpoint = window.matchMedia("(min-width:992px)").matches;
-//     if (!Init.breakpoint) {
-//       html.classList.remove("desktop");
-//       html.classList.add("mobile");
-//     } else {
-//       html.classList.remove("mobile");
-//       html.classList.add("desktop");
-//     }
-//   },
-//   getBrowserSize: function () {
-//     this.bodyHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-//     this.bodyWidth = Math.max(document.body.scrollWidth, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth);
-//   },
-//   drawBreakPoint: function () {
-//     html.setAttribute("data-width", this.bodyWidth);
-//     html.setAttribute("data-height", this.bodyHeight);
-//   },
-// };
-
 var Gnb = {
   gnbListAnchorEl: document.querySelectorAll(".gnb .has-treeview > a"),
   gnblistEl: document.querySelector('.gnb .dep1>li:not(.has-treeview) > a'),
-  // gnbListAnchorElName: document.querySelector
   init: function () {
-    // this.focus();
+    // window.addEventListener("mousewheel", this.scrolling);
+    // window.addEventListener("touchmove", this.scrolling);
     if (window.matchMedia("(max-width:768px)").matches) { //desktop
       this.click();
     } else {
-       this.focus();
+      // this.focus();
     }
   },
   focus: function () {
+    // 탭으로 이동시
     Gnb.gnbListAnchorEl.forEach((item) => {
       item.addEventListener("focus", function (e) {
         e.preventDefault();
@@ -109,20 +34,22 @@ var Gnb = {
     Gnb.gnblistEl.addEventListener("focus", function (e) { 
       Gnb.gnbListAnchorEl.forEach(buttonel => buttonel.parentNode.classList.remove("is-visible"));
     });
-
-    console.log(Gnb.gnblistEl)
   },
 
 
   click: function () {
-    Gnb.gnbListAnchorEl.forEach((item) => {
-      item.addEventListener("click", function (e) {
-        e.preventDefault();
-        Gnb.gnbListAnchorEl.forEach((item) => {
+    Gnb.gnbListAnchorEl.forEach(item => { 
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (this.parentNode.classList.contains("is-visible")) {
+          //이미 클릭되서 클래스를 가질경우
           item.parentNode.classList.remove("is-visible");
-        });
-        this.parentNode.classList.toggle("is-visible");
-      });
+        } else {
+          //처음일경우
+          Gnb.gnbListAnchorEl.forEach(item => item.parentNode.classList.remove("is-visible")); //배열로 다시만들어서 처음 제거, 
+          this.parentNode.classList.add("is-visible"); //그다음 클래스 추가
+        }
+      })
     })
 
     Gnb.gnblistEl.addEventListener("click", function (e) { 
@@ -226,6 +153,7 @@ var Search = {
     this.close();
 
     window.addEventListener("resize", this.filled);
+
   },
   open: function () {
     Search.searchInputEl.addEventListener("click", (evnet) => {
@@ -279,8 +207,6 @@ var Search = {
         html.classList.remove('searching');
         playScroll()
         return;
-      } else {
-
       }
     });
   }
@@ -307,9 +233,7 @@ var Category = {
     }
   },
   sticky: function () {
-    let headerHeight = header.offsetHeight;
     let stickyEl = document.querySelector(".category-sort-container");
-    let topPos = window.pageYOffset + stickyEl.getBoundingClientRect().top;;
     if (stickyEl !== null && window.innerWidth < 767) {
       const observer = new IntersectionObserver(
         // let observer = new IntersectionObserver(callback, options);
@@ -334,13 +258,12 @@ var Category = {
 
 var Footer = {
   footerEl : document.querySelector(".footer"),
-  
+  toggleButtonEls : document.querySelectorAll(".footer .nav-toggle-button"),
   init: function () {
     this.openLayer();
   },
   openLayer: function() {
-    let toggleButtonEls = Footer.footerEl.querySelectorAll(".nav-toggle-button");
-    toggleButtonEls.forEach(button => { 
+    Footer.toggleButtonEls.forEach(button => { 
       button.addEventListener("click", function (event) {
         event.stopPropagation();
         if (this.classList.contains("opened")) {
@@ -348,14 +271,15 @@ var Footer = {
           button.classList.remove("opened");
         } else {
           //처음일경우
-          toggleButtonEls.forEach(buttonel => buttonel.classList.remove("opened")); //배열로 다시만들어서 처음 제거, 
+          Footer.toggleButtonEls.forEach(buttonel => buttonel.classList.remove("opened")); //배열로 다시만들어서 처음 제거, 
           button.classList.add("opened"); //그다음 클래스 추가
         }
       })
     })
+    
 
     window.addEventListener("click", (event) => {
-      toggleButtonEls.forEach(button => button.classList.remove("opened"));
+      Footer.toggleButtonEls.forEach(button => button.classList.remove("opened"));
     })
 
   }
@@ -364,33 +288,29 @@ var Footer = {
 Gnb.init();
 Menu.init();
 Select.init();
-Search.init();
 Category.init();
 Footer.init();
+
+
+
+
 
 // --------------------------------------------------------
 // 함수 형태로 형태로 만들기
 // --------------------------------------------------------
 
 
-
+//html 스크롤
 function playScroll() {
-  html.classList.remove("fixed"); //html 스크롤
+  html.classList.remove("fixed"); 
 }
-
+//html 고정
 function stopScroll() {
-  html.classList.add("fixed"); //html 고정
+  html.classList.add("fixed"); 
 }
 
-// function hideSearch() {
-//   searchInputEl.value = '';// 인풋값 초기화
-//   searchArea.classList.remove('filled');
-// }
 
-function search() {
-
-}
-
+// 디바이스 넓이 체크
 function deviceWidth() {
   if (window.innerWidth <= 767) {
     html.classList.remove('desktop');
@@ -406,45 +326,12 @@ function deviceWidth() {
   }
 }
 
-function CheckValueLengh() {
-  let inputs = [...document.querySelectorAll("input[type=search]")];
-  if (inputs.value.length > 0) {
-    this.nextElementSibling.classList.add("filled");
-    return false;
-  }
-
-}
 
 window.addEventListener("resize", () => {
   deviceWidth()
-  // search()
 })
 
 document.addEventListener('DOMContentLoaded', function () {
   deviceWidth();
 });
-// 화면 전체를 클릭했을 때 메뉴가 사라짐.
-window.addEventListener("click", () => {
 
-});
-
-
-
-// PC, MOBILE 구별
-function deviceCheck() {
-  // 디바이스 종류 설정
-  var pcDevice = "win16|win32|win64|mac|macintel";
-
-  // 접속한 디바이스 환경
-  if (navigator.platform) {
-    if (pcDevice.indexOf(navigator.platform.toLowerCase()) < 0) {
-      console.log('MOBILE');
-      body.classList.add("mobile");
-      body.classList.remove("pc");
-    } else {
-      console.log('PC');
-      body.classList.add("pc");
-      body.classList.remove("mobile");
-    }
-  }
-}

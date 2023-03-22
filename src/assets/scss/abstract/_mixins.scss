@@ -161,3 +161,51 @@ $path-image : '../images/';
   border-radius: $border-radius-md;
   padding : #{$paddiing-y}rem #{$paddiing-x}rem;
 }
+
+
+//form-filed 
+@mixin form-field-type($type : input){
+  padding: rem(20) rem(20);
+  border-radius:  $border-radius;
+  @if ($type== input){
+    height: rem(56);
+  }
+  @else if($type == textarea){
+    height: rem(150);
+  }
+}
+
+//form-check
+@mixin form-check-type($type : checkbox){
+  width: rem(20);
+  height: rem(20);
+  // margin-top: 1.05px;
+  // vertical-align: top;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: 1px solid $border-color;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-print-color-adjust: exact;
+  flex: none;
+  cursor: pointer;
+  background-color: $white;
+  @if ($type == checkbox){
+    border-radius: 4px;
+    &:checked{
+    background-color: $blue;
+    border-color: $blue;
+    background-image: svg-image(check, fff);
+    }
+  }
+  @else if($type == radio){
+    border-radius: 50%;
+    &:checked{
+      background-color: $blue;
+      border-color: $blue;
+      background-image:svg-image(radio, fff);
+      }
+  }
+}

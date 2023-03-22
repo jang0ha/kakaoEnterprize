@@ -56,12 +56,9 @@ $_hover-color:111;
         background-image: svg-image(#{$key-name}, #{$_hover-color});
       }
 
-
-
       @if $key-name==outlink {
         &::after{
           transform: translate3d(rem(-22), rem(22), 0);
-
         }
       }
 
@@ -74,7 +71,6 @@ $_hover-color:111;
 
     .desktop & {
       &:hover {
-      
         .icon--key__#{$key-name} {
           background-color: $primary;
           @if $key-name==outlink {
@@ -127,9 +123,9 @@ $_hover-color:111;
   }
 }
 
-
-
-
+//-----------------------------------------
+//*************기본 버튼******************
+//---------------------------------------
 .btn {
   @include button();
   // 버튼 컬러 
@@ -149,10 +145,11 @@ $_hover-color:111;
 .btn-lg{
   padding: rem(14) rem(24)!important;
 }
-.btn-xl{
-  
-}
 
+
+//-----------------------------------------
+//*************커스텀 버튼******************
+//-----------------------------------------
 
 // 공통 - 검색버튼
 .search-button{

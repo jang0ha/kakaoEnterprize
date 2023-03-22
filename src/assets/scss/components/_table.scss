@@ -1,0 +1,59 @@
+@use '../abstract/'as *;
+
+
+table {
+  width: 100%;
+}
+
+table {
+  th{
+    background-color: $light-gray;
+    font-weight: 700;
+    font-size: rem(14);
+    line-height: rem(25);
+    letter-spacing: -0.005em;
+    color: $dark-gray;
+    border: 1px solid $light-gray;
+    padding : rem(10) rem(20);
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+
+  td {
+    font-size: rem(14);
+    line-height: rem(25);
+    letter-spacing: -0.005em;
+    color: #333333;
+    text-align: left;
+    padding: 20px;
+    vertical-align: top;
+    white-space: inherit;
+    border: 1px solid $border-color;
+  }
+
+  tr{
+    td:first-child{
+      border-left: 0;
+    }
+    td:last-child{
+      border-right: 0;
+    }
+  }
+  @include res--mobile-up{
+    th, td{
+      font-size: rem(16);
+    }
+  }
+}
+
+.overflow-x-auto{
+  overflow-x: auto;
+  margin-right: rem(-20);
+  margin-left: rem(-20);
+  padding-right: rem(20);
+  padding-left: rem(20);
+  table{
+
+    min-width: 400px;
+  }
+}
