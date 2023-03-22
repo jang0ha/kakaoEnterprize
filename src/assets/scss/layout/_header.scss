@@ -13,6 +13,7 @@
   width: 100%;
   top: 0;
   background: $white;
+  transition: top 0.3s;
   .inner {
     @include hstack(0);
     font-size: rem(15);
@@ -22,12 +23,9 @@
   }
 
   @include res--mobile-up {
-    height: $header-height-lg;
-
-    .inner {}
+    height: $header-height;
   }
 
-  @include res--laptop-up {}
 
   .open-menu & {
     background-color: $black;
@@ -37,6 +35,7 @@
   &.hide-header{
     top:-#{$header-height};
   }
+
 }
 
 .menu-button {

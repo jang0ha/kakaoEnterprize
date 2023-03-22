@@ -31,14 +31,14 @@ var Gnb = {
       });
     });
 
-    Gnb.gnblistEl.addEventListener("focus", function (e) { 
+    Gnb.gnblistEl.addEventListener("focus", function (e) {
       Gnb.gnbListAnchorEl.forEach(buttonel => buttonel.parentNode.classList.remove("is-visible"));
     });
   },
 
 
   click: function () {
-    Gnb.gnbListAnchorEl.forEach(item => { 
+    Gnb.gnbListAnchorEl.forEach(item => {
       item.addEventListener("click", function (event) {
         event.preventDefault();
         if (this.parentNode.classList.contains("is-visible")) {
@@ -52,7 +52,7 @@ var Gnb = {
       })
     })
 
-    Gnb.gnblistEl.addEventListener("click", function (e) { 
+    Gnb.gnblistEl.addEventListener("click", function (e) {
       Gnb.gnbListAnchorEl.forEach(buttonel => buttonel.parentNode.classList.remove("is-visible"));
     });
 
@@ -68,7 +68,7 @@ var Menu = {
 
   click: function () {
     Menu.menuButtonEl.addEventListener('click', (event) => {
-      event.stopPropagation(); 
+      event.stopPropagation();
       body.classList.toggle("open-menu");
       if (body.classList.contains('open-menu')) {
         stopScroll();
@@ -206,7 +206,7 @@ var Search = {
       if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
         html.classList.remove('searching');
         playScroll()
-        return;
+        return;blank
       }
     });
   }
@@ -218,7 +218,7 @@ var Category = {
   subCategoryWrapEl: document.querySelector('.category-sub-list'),
   init: function () {
     this.toggle();
-    this.sticky();
+    // this.sticky();
   },
   toggle: function () {
     if (Category.moreButtonEl !== null) {
@@ -237,7 +237,7 @@ var Category = {
     if (stickyEl !== null && window.innerWidth < 767) {
       const observer = new IntersectionObserver(
         // let observer = new IntersectionObserver(callback, options);
-        //콜백 1번째 인수
+        //콜백 1번째 인수blank
         ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
 
         //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
@@ -245,10 +245,9 @@ var Category = {
         // 아래 콜백의 옵션
         {
           threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
-          rootMargin: '-80px 0px 0px 0px' 
+          rootMargin: '-80px 0px 0px 0px'
+          // rootMargin: '80px 0px 0px 0px'
         }
-
-        
       );
       observer.observe(stickyEl);
     }
@@ -257,13 +256,13 @@ var Category = {
 
 
 var Footer = {
-  footerEl : document.querySelector(".footer"),
-  toggleButtonEls : document.querySelectorAll(".footer .nav-toggle-button"),
+  footerEl: document.querySelector(".footer"),
+  toggleButtonEls: document.querySelectorAll(".footer .nav-toggle-button"),
   init: function () {
     this.openLayer();
   },
-  openLayer: function() {
-    Footer.toggleButtonEls.forEach(button => { 
+  openLayer: function () {
+    Footer.toggleButtonEls.forEach(button => {
       button.addEventListener("click", function (event) {
         event.stopPropagation();
         if (this.classList.contains("opened")) {
@@ -276,7 +275,7 @@ var Footer = {
         }
       })
     })
-    
+
 
     window.addEventListener("click", (event) => {
       Footer.toggleButtonEls.forEach(button => button.classList.remove("opened"));
@@ -290,7 +289,7 @@ Menu.init();
 Select.init();
 Category.init();
 Footer.init();
-
+header_scroll();
 
 
 
@@ -302,11 +301,11 @@ Footer.init();
 
 //html 스크롤
 function playScroll() {
-  html.classList.remove("fixed"); 
+  html.classList.remove("fixed");
 }
 //html 고정
 function stopScroll() {
-  html.classList.add("fixed"); 
+  html.classList.add("fixed");
 }
 
 
@@ -327,8 +326,77 @@ function deviceWidth() {
 }
 
 
+// 헤더 스크롤 이벤트
+function header_scroll() {
+
+  var lastScroll = 0,
+    moveScroll = 10,
+    didScroll = null,
+    currentScroll = 0,
+    headerBlock = document.querySelector("header"),
+    headerHeight = document.querySelector("header").clientHeight,
+    windowHeight = window.innerHeight;
+
+  document.addEventListener("scroll", () => {
+    didScroll = true; //// 스크롤시에 사용자가 스크롤했다는 것을 알림 
+    has_scrolled();
+
+  });
+
+
+  setInterval(function () {
+
+    if (didScroll && !body.classList.contains('open-menu')) {
+      has_scrolled();
+      didScroll = false; //didScroll 상태를 재설정
+    }
+
+  }, 50);
+
+  function has_scrolled() {
+
+    // currentScroll = window.scrollY ||  document.documentElement.scrollTop;
+    currentScroll = window.scrollY;
+  
+
+    console.log(currentScroll);
+    // 이전의 스크롤 위치와 비교하기
+    const direction = currentScroll > lastScroll ? "Scroll Down" : "Scroll Up";
+  
+    // 현재의 스크롤 값을 이전스크롤값으로  저장
+    // console.log(direction + "1");
+  
+    //이전 / 현재 스크롤 
+    // console.log(lastScroll, currentScroll);
+    // console.log(windowHeight);
+  
+    // Make sure they scroll more than move scroll
+    if (Math.abs(lastScroll - currentScroll) <= moveScroll) return;
+  
+  
+    if (currentScroll > lastScroll) { // ScrollDown
+  
+      if (currentScroll > windowHeight) { // 윈도우높이 보다 클때
+        console.log('asdf');
+        console.log(lastScroll, currentScroll);
+        console.log(windowHeight);
+        headerBlock.classList.add('hide-header');
+        html.classList.add('header-hide');
+      }
+    } else { // ScrollUp
+      headerBlock.classList.remove('hide-header');
+      html.classList.remove('header-hide');
+    }
+  
+    lastScroll = currentScroll;
+  }
+}
+
+
+
 window.addEventListener("resize", () => {
   deviceWidth()
+
 })
 
 document.addEventListener('DOMContentLoaded', function () {

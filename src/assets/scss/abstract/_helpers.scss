@@ -65,22 +65,28 @@
   margin-right: rem(-20);
 
   >* {
-    &:only-child {
-      display: block;
-      // width: 110%;
 
+    &:only-child {
+      // display: block;
+      // width: 100%!important;
       > * {
         max-width: none;
         padding:rem(8) 0;
+        width: 100%;
+        &:only-child{
+          width: 100%;
+        }
       }
+
     }
   }
-  .category-sort-container {
+  >.category-sort-container {
     display: block;
     flex: none;
     margin-left: -20rem;
     margin-right: -20rem;
     transition: all 0.3s;
+
     .category-sub-list{
       padding-top: 0;
     }
@@ -234,11 +240,15 @@
 }
 
 .is-sticked{
-  position: sticky;
+  position: fixed;
   box-shadow: -2px 5rem 11rem 0px rgba(0, 0, 0, 0.056);
   top: $header-height;
+  // top : 0;
   z-index: 1028;
   background-color: $white;
+  .header-hide &{
+    top : 0;
+  }
 
   .mobile &{
     & ~ .custom-select{
