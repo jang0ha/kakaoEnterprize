@@ -46,7 +46,10 @@
 
 
 .section {
-  margin-top: rem(80);
+  margin-bottom: rem(80);
+  @include res--mobile-up{
+    margin-top: rem(40);
+  }
 }
 
 .card{
@@ -85,8 +88,9 @@
     flex: none;
     margin-left: -20rem;
     margin-right: -20rem;
-    transition: all 0.3s;
 
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
     .category-sub-list{
       padding-top: 0;
     }
@@ -234,22 +238,16 @@
   @extend %contents-btn-wrap;
 }
 
-.sticky-selector{
-  -webkit-transition: top .2s ease-in-out;
-  transition: top .2s ease-in-out
-}
-
 .is-sticked{
-  position: fixed;
+  position: sticky;
   box-shadow: -2px 5rem 11rem 0px rgba(0, 0, 0, 0.056);
-  top: $header-height;
-  // top : 0;
+  // top: $header-height;
+  top : 0;
   z-index: 1028;
   background-color: $white;
   .header-hide &{
     top : 0;
   }
-
   .mobile &{
     & ~ .custom-select{
       margin-top: rem(60)!important;

@@ -206,7 +206,8 @@ var Search = {
       if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
         html.classList.remove('searching');
         playScroll()
-        return;blank
+        return;
+        blank
       }
     });
   }
@@ -218,7 +219,7 @@ var Category = {
   subCategoryWrapEl: document.querySelector('.category-sub-list'),
   init: function () {
     this.toggle();
-    // this.sticky();
+    this.sticky();
   },
   toggle: function () {
     if (Category.moreButtonEl !== null) {
@@ -235,20 +236,49 @@ var Category = {
   sticky: function () {
     let stickyEl = document.querySelector(".category-sort-container");
     if (stickyEl !== null && window.innerWidth < 767) {
-      const observer = new IntersectionObserver(
-        // let observer = new IntersectionObserver(callback, options);
-        //콜백 1번째 인수blank
-        ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
 
-        //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
+      // // options에 따라 인스턴스 생성
+      // const observer = new IntersectionObserver(
+      //   // let observer = new IntersectionObserver(callback, options);
+      //   //콜백 1번째 인수blank
+      //   ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
 
-        // 아래 콜백의 옵션
-        {
-          threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
-          rootMargin: '-80px 0px 0px 0px'
-          // rootMargin: '80px 0px 0px 0px'
-        }
-      );
+      //   //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
+
+      //   // 아래 콜백의 옵션
+      //   {
+      //     threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
+      //     rootMargin: '-80px 0px 0px 0px',
+      //     root: document.querySelector('category-sort-wrap'),
+      //     // rootMargin: '80px 0px 0px 0px'
+      //   }
+      // );
+
+      let observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          // 가시성의 변화가 있으면 관찰 대상 전체에 대한 콜백이 실행되므로,
+          // 관찰 대상의 교차 상태가 false일(보이지 않는) 경우 실행하지 않음.
+          if (!entry.intersectionRatio < 1) {
+            entry.target.classList.remove('is-sticked');
+            return
+          }
+          // 관찰 대상의 교차 상태가 true일(보이는) 경우 실행.
+          // ...
+
+          entry.target.classList.add('is-sticked'),
+          {
+                threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
+                rootMargin: '-80px 0px 0px 0px',
+                root: document.querySelector('category-sort-wrap'),
+                // rootMargin: '80px 0px 0px 0px'
+              }
+
+          // 위 실행을 처리하고(1회) 관찰 중지
+          observer.unobserve(entry.target);
+        })
+      });
+
+      // 타겟 요소 관찰 시작
       observer.observe(stickyEl);
     }
   }
@@ -287,9 +317,10 @@ var Footer = {
 Gnb.init();
 Menu.init();
 Select.init();
+Search.init();
 Category.init();
 Footer.init();
-header_scroll();
+// header_scroll();
 
 
 
@@ -357,25 +388,25 @@ function header_scroll() {
 
     // currentScroll = window.scrollY ||  document.documentElement.scrollTop;
     currentScroll = window.scrollY;
-  
+
 
     console.log(currentScroll);
     // 이전의 스크롤 위치와 비교하기
     const direction = currentScroll > lastScroll ? "Scroll Down" : "Scroll Up";
-  
+
     // 현재의 스크롤 값을 이전스크롤값으로  저장
     // console.log(direction + "1");
-  
+
     //이전 / 현재 스크롤 
     // console.log(lastScroll, currentScroll);
     // console.log(windowHeight);
-  
+
     // Make sure they scroll more than move scroll
     if (Math.abs(lastScroll - currentScroll) <= moveScroll) return;
-  
-  
+
+
     if (currentScroll > lastScroll) { // ScrollDown
-  
+
       if (currentScroll > windowHeight) { // 윈도우높이 보다 클때
         console.log('asdf');
         console.log(lastScroll, currentScroll);
@@ -387,7 +418,7 @@ function header_scroll() {
       headerBlock.classList.remove('hide-header');
       html.classList.remove('header-hide');
     }
-  
+
     lastScroll = currentScroll;
   }
 }
@@ -402,4 +433,3 @@ window.addEventListener("resize", () => {
 document.addEventListener('DOMContentLoaded', function () {
   deviceWidth();
 });
-
