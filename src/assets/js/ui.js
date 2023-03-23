@@ -146,70 +146,79 @@ var Search = {
   searchContianerEl: document.querySelector('.search-container'),
   closeBtnEl: document.querySelector(".search-header .history-btn"),
   init: function () {
-    this.open();
-    this.blur();
-    this.filled();
-    this.delete();
-    this.close();
-
+      this.open();
+      this.blur();
+      this.filled();
+      this.delete();
+      this.close();
     window.addEventListener("resize", this.filled);
-
   },
   open: function () {
+    if (Search.searchInputEl != null) { 
     Search.searchInputEl.addEventListener("click", (evnet) => {
-      html.classList.add('searching');
+      
+        html.classList.add('searching');
 
-      if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
-        stopScroll();
-      }
-    })
+        if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+          stopScroll();
+        }
+      })
+    }
 
   },
   blur: function () {
-    Search.searchInputEl.addEventListener("blur", (event) => {
-      event.stopPropagation();
-      // html.classList.remove('searching');
-      if (!html.classList.contains('mobile')) {
-        html.classList.remove('searching');
-        playScroll()
-      }
-    })
+    if (Search.searchInputEl != null) {
+      Search.searchInputEl.addEventListener("blur", (event) => {
+        event.stopPropagation();
+        // html.classList.remove('searching');
+        if (!html.classList.contains('mobile')) {
+          html.classList.remove('searching');
+          playScroll()
+        }
+      })
+    }
 
   },
   filled: function () {
-    // 삭제버튼 노출
-    Search.searchInputEl.addEventListener("keyup", function (evnet) {
-      let searchArea = this.closest(".search-area");
-      if (this.value.length > 0) {
-        searchArea.classList.add("filled");
-      } else {
-        searchArea.classList.remove("filled");
+    if (Search.searchInputEl != null) {
+      // 삭제버튼 노출
+      Search.searchInputEl.addEventListener("keyup", function (evnet) {
+        let searchArea = this.closest(".search-area");
+        if (this.value.length > 0) {
+          searchArea.classList.add("filled");
+        } else {
+          searchArea.classList.remove("filled");
+        }
+      });
+      if (html.classList.contains('desktop') && html.classList.contains('searching')) {
+        html.classList.remove('searching');
+        playScroll()
       }
-    });
-    if (html.classList.contains('desktop') && html.classList.contains('searching')) {
-      html.classList.remove('searching');
-      playScroll()
     }
   },
   delete: function () {
-    Search.searchDeleteEl.addEventListener("click", function (event) {
-      let searchArea = this.closest(".search-area");
-      event.stopPropagation();
-      Search.searchInputEl.value = ''; // 인풋값 초기화
-      searchArea.classList.remove('filled');
-      // html.classList.remove('searching');
-    })
+    if (Search.searchDeleteEl != null) {
+      Search.searchDeleteEl.addEventListener("click", function (event) {
+        let searchArea = this.closest(".search-area");
+        event.stopPropagation();
+        Search.searchInputEl.value = ''; // 인풋값 초기화
+        searchArea.classList.remove('filled');
+        // html.classList.remove('searching');
+      })
+    }
   },
   close: function () {
-    Search.closeBtnEl.addEventListener("click", function (event) {
-      event.stopPropagation();
-      if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
-        html.classList.remove('searching');
-        playScroll()
-        return;
-        blank
-      }
-    });
+    if (Search.closeBtnEl != null) {
+      Search.closeBtnEl.addEventListener("click", function (event) {
+        event.stopPropagation();
+        if (html.classList.contains('mobile') && html.classList.contains('searching')) { //mobile
+          html.classList.remove('searching');
+          playScroll()
+          return;
+          blank
+        }
+      });
+    }
   }
 }
 
@@ -219,7 +228,7 @@ var Category = {
   subCategoryWrapEl: document.querySelector('.category-sub-list'),
   init: function () {
     this.toggle();
-    this.sticky();
+    // this.sticky();
   },
   toggle: function () {
     if (Category.moreButtonEl !== null) {
@@ -235,48 +244,25 @@ var Category = {
   },
   sticky: function () {
     let stickyEl = document.querySelector(".category-sort-container");
+    let titleBlock = document.querySelector(".title-header-wrap");
     if (stickyEl !== null && window.innerWidth < 767) {
 
       // // options에 따라 인스턴스 생성
-      // const observer = new IntersectionObserver(
-      //   // let observer = new IntersectionObserver(callback, options);
-      //   //콜백 1번째 인수blank
-      //   ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
+      const observer = new IntersectionObserver(
+        // let observer = new IntersectionObserver(callback, options);
+        //콜백 1번째 인수blank
+        ([e]) => e.target.classList.toggle('is-sticked', e.intersectionRatio < 1),
 
-      //   //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
+        //intersectionRatio : intersectionRect 영역과 boundingClientRect 영역의 비율 >관찰 대상의 교차한 영역 백분율 (threshold와 같은 값을 가짐) >> 타겟이 뷰포트(root)에 1 안에 있을때
 
-      //   // 아래 콜백의 옵션
-      //   {
-      //     threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
-      //     rootMargin: '-80px 0px 0px 0px',
-      //     root: document.querySelector('category-sort-wrap'),
-      //     // rootMargin: '80px 0px 0px 0px'
-      //   }
-      // );
-
-      let observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          // 가시성의 변화가 있으면 관찰 대상 전체에 대한 콜백이 실행되므로,
-          // 관찰 대상의 교차 상태가 false일(보이지 않는) 경우 실행하지 않음.
-          if (!entry.intersectionRatio < 1) {
-            entry.target.classList.remove('is-sticked');
-            return
-          }
-          // 관찰 대상의 교차 상태가 true일(보이는) 경우 실행.
-          // ...
-
-          entry.target.classList.add('is-sticked'),
-          {
-                threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
-                rootMargin: '-80px 0px 0px 0px',
-                root: document.querySelector('category-sort-wrap'),
-                // rootMargin: '80px 0px 0px 0px'
-              }
-
-          // 위 실행을 처리하고(1회) 관찰 중지
-          observer.unobserve(entry.target);
-        })
-      });
+        // 아래 콜백의 옵션
+        {
+          threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
+          rootMargin: '-10px 0px 0px 0px',
+          // root: document.querySelector('category-sort-wrap'),
+          // rootMargin: '80px 0px 0px 0px'
+        }
+      );
 
       // 타겟 요소 관찰 시작
       observer.observe(stickyEl);
@@ -320,7 +306,7 @@ Select.init();
 Search.init();
 Category.init();
 Footer.init();
-// header_scroll();
+header_scroll();
 
 
 

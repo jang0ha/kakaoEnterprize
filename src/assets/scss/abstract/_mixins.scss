@@ -5,7 +5,7 @@
 
 // 플렉스 / 가로
 @mixin hstack($gap:null){
-  display: inline-flex;
+  display: inline-flex!important;
   align-items: center;
   // gap: #{calc($gap)}rem;
   @if($gap == null ){

@@ -11,7 +11,7 @@
   max-width: none;
   padding: 0;
   width: 100%;
-  // top: 0;
+  top: 0;
   background: $white;
   transition: top 0.3s;
   .inner {
@@ -157,6 +157,7 @@
     background-color: $black;
     position: fixed;
     top: $header-height;
+    // top: 0;
     width: 100%;
     height: calc(100vh - $header-height);
     left: 0;
@@ -229,6 +230,7 @@
           size:rem(14);
         }
         a{
+          @include hstack(8);
           font : {
             size: rem(14);
           }
@@ -237,6 +239,7 @@
           white-space: nowrap;
           color: #666;
           transition: color .3s;
+          min-height:rem(40);
           &:hover, &:focus{
             font : {
               weight:bold;
@@ -282,7 +285,7 @@
     .has-treeview{
       @include hstack(null);
       height: 100%;
-      height: $header-height-lg;
+      height: $header-height;
       position: relative;
       &::before{
         content: '';
@@ -304,7 +307,7 @@
         visibility: hidden;
         position: absolute;
         padding-top: rem(10);
-        top:$header-height-lg ;
+        top:$header-height ;
         left: 50%;
         transform: translateX(-50%);
         z-index: 3;
