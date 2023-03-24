@@ -1,6 +1,7 @@
 {
-  "name": "gulp-html",
+  "name": "KakaoEnterprize_v2",
   "version": "1.0.0",
+  "description": "",
   "scripts": {
     "gulp": "gulp",
     "build": "npm run build"
@@ -34,11 +35,11 @@
   "main": "gulpfile.babel.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jang0ha/portfolio2023.git"
+    "url": "git+https://github.com/jang0ha/kakaoEnterprize_v2.git"
   },
   "bugs": {
-    "url": "https://github.com/jang0ha/portfolio2023/issues"
+    "url": "https://github.com/jang0ha/kakaoEnterprize_v2/issues"
   },
-  "homepage": "https://github.com/jang0ha/portfolio2023#readme",
+  "homepage": "https://github.com/jang0ha/kakaoEnterprize_v2.git#readme",
   "description": ""
 }
