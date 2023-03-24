@@ -2,7 +2,8 @@
   "name": "gulp-html",
   "version": "1.0.0",
   "scripts": {
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "build": "npm run build"
   },
   "author": "",
   "license": "ISC",
