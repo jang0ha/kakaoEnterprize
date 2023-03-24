@@ -11,12 +11,10 @@ var Gnb = {
   gnbListAnchorEl: document.querySelectorAll(".gnb .has-treeview > a"),
   gnblistEl: document.querySelector('.gnb .dep1>li:not(.has-treeview) > a'),
   init: function () {
-    // window.addEventListener("mousewheel", this.scrolling);
-    // window.addEventListener("touchmove", this.scrolling);
     if (window.matchMedia("(max-width:768px)").matches) { //desktop
       this.click();
     } else {
-      // this.focus();
+      this.focus();
     }
   },
   focus: function () {
@@ -258,9 +256,7 @@ var Category = {
         // 아래 콜백의 옵션
         {
           threshold: [1], //옵저버가 실행되기 위해 타겟의 가시성이 얼마나 필요한지 >> 타겟넓이전체가 다 들어왔을때
-          rootMargin: '-10px 0px 0px 0px',
-          // root: document.querySelector('category-sort-wrap'),
-          // rootMargin: '80px 0px 0px 0px'
+          rootMargin: '-81px 0px 0px 0px'
         }
       );
 
@@ -312,7 +308,7 @@ header_scroll();
 
 
 // --------------------------------------------------------
-// 함수 형태로 형태로 만들기
+// 함수  형태로 만들기
 // --------------------------------------------------------
 
 

@@ -239,10 +239,11 @@
 }
 
 .is-sticked{
-  position: sticky;
+  position: sticky!important;
   box-shadow: -2px 5rem 11rem 0px rgba(0, 0, 0, 0.056);
+  top: 80px;
   // top: $header-height;
-  top : 0;
+  // top : 0;
   z-index: 1028;
   background-color: $white;
   .header-hide &{

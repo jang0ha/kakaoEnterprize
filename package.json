@@ -27,6 +27,7 @@
     "sass": "^1.51.0"
   },
   "dependencies": {
+    "netlify": "^13.1.3",
     "swiper": "^8.4.5"
   },
   "main": "gulpfile.babel.js",
