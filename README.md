@@ -76,7 +76,9 @@ ___
 
 
 1. 참조 >>  @funciton svg-image / 가이드페이지  버튼 참고 
+1. 섹셔닝 >>
 
+![카카오 아웃라인](https://user-images.githubusercontent.com/71423463/230551220-df4fc193-92e7-45ea-b048-bc64c9cf40b2.PNG)
 
 
 
