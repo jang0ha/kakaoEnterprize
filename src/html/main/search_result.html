@@ -9,85 +9,104 @@
   <div id="wrap">
     @@include('@@webRoot/html/_include/_header.html', {"main": true})
     <main id="contatiner">
-
-      <!-- 히어로 섹션 -->
-      <section class="section hero-section">
-        <div class="inner">
-          <h1 class="main-title">
-            카카오엔터프라이즈 <br class="d-md-none">
-            고객지원 입니다. <br>
-            도움이 필요하신가요?
-          </h1>
-
-          @@include('@@webRoot/html/_include/_search.html')
-
-          <div class="suggestion-area">
-            <div class="suggestion-keyword">
-              <p class="title">추천 키워드</p>
-              <button type="button" class="btn btn-keyword">카카오 i 클라우드 요금제</button>
-              <button type="button" class="btn btn-keyword">카카오워크 도입</button>
-              <button type="button" class="btn btn-keyword">kakao i cloud</button>
+      <section>
+        <!-- 검색영역 -->
+        <div class="section hero-section" aria-label="검색영역">
+          <div class="inner">
+            <h2 class="main-title">
+              카카오엔터프라이즈 <br class="d-md-none">
+              고객지원 입니다. <br>
+              도움이 필요하신가요?
+            </h2>
+            @@include('@@webRoot/html/_include/_search.html')
+            <div class="suggestion-area">
+              <div class="suggestion-keyword">
+                <p class="title">추천 키워드</p>
+                <button type="button" class="btn btn-keyword">카카오 i 클라우드 요금제</button>
+                <button type="button" class="btn btn-keyword">카카오워크 도입</button>
+                <button type="button" class="btn btn-keyword">kakao i cloud</button>
+              </div>
             </div>
           </div>
         </div>
+        <!-- 검색영역끝  -->
+
+        <!-- 검색결과 섹션  -->
+        <article class="search-result-section">
+          <div class="inner">
+            <div class="title-header-wrap">
+              <i class="icon-title-comment"></i>
+              <h3>“계정”에 대한 결과 <span>(총 100 건)</span></h3>
+            </div>
+
+
+            <div class="contents-wrap">
+              <!-- @@ 기본) 구조 그대로 필요한 부분만 넣고 쓰면 됨 -->
+              <div class="category-sort-wrap ">
+                <div class="category-sort-container">
+                  <ul class="category-main-list" role="navigation">
+                    <li><button type="button" class="nav-link primary active">카카오 i 클라우드</button></li>
+                    <li><button type="button" class="nav-link primary">카카오워크</button></li>
+                    <li><button type="button" class="nav-link primary">카카오 i 라스</button></li>
+                  </ul>
+                  <!-- <div class="category-sub-list-wrap">
+                  <ul class="category-sub-list" role="tablist">
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary active">전체</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Networking</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Container Pack</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Container Pack</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Storage</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Developer Tools</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Developer Tools</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">AI Service</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Security</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">Hybrid Cloud</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">OCR</a></li>
+                    <li role="presentation"><a href="javascript:;" class="nav-link secondary" role="tab">NLP</a></li>
+                  </ul>
+                  <button type="button" class="category-toggle-button" aria-label="더보기"></button>
+                </div> -->
+                </div>
+                <select name="" id="list_order" class="hidden-select">
+                  <option value="1">최신 순</option>
+                  <option value="2">최신 순1</option>
+                </select>
+              </div>
+
+
+              <!-- [공통] -리스트 영역 / 브래드 크럼브 존재 .result-list-->
+              <ul class="list-link-wrap result-list" role="navigation">
+                <li>
+                  <a href="javascirpt:;" title="이동">
+                    <ol class="breadcrumb-search">
+                      <li>카카오워크</li>
+                      <li>가입</li>
+                    </ol>
+                    <div class="link-container">
+                      <div class="link-bullets">
+                        <i class="icon-question" aria-label="질문"></i>
+                      </div>
+                      <div class="link-title">계정 보호 및 보안 기능에 대해 안내 드립니다.</div>
+                      <div class="link-assistant">
+                        <i class="icon-arrow-right" aria-label="이동"></i>
+                      </div>
+                    </div>
+                    <div class="desc-area">
+                      메시지와 파일 등을 비롯해 카카오워크에서 주고받은 모든 데이터는 카카오가 직접 제공하는 카카오 i 클라우드에 암호화되어 저장됩니다. 사용자가 사용하는 디바이스에는 최소한의 메시지만 저장하여 디바이스 저장을 최소화하고 있습니다.메시지와 파일 등을 비롯해 카카오워크에서 주고받은 모든 데이터는 513122313333333333333333333333333311111aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    </div>
+                  </a>
+                </li>
+              </ul>
+
+              @@include("@@webRoot/html/_include/_pagination.html")
+            </div>
+          </div>
+        </article>
+
       </section>
       <!-- 히어로 섹션 끝 -->
 
-      <!-- 검색결과 섹션  -->
-      <section class="search-result-section">
-        <div class="inner">
-          <div class="title-header-wrap">
-            <i class="icon-title-comment"></i>
-            <h2>“계정”에 대한 결과 <span>(총 100 건)</span></h2>
-          </div>
 
-
-          <div class="contents-wrap">
-            <!-- [공통]@@ 기본) 구조 그대로 필요한 부분만 넣고 쓰면 됨 -->
-            <div class="category-sort-wrap ">
-              <div class="category-sort-container">
-                <nav class="category-main-list">
-                  <button type="button" class="nav-link primary active">카카오 i 클라우드</button>
-                  <button type="button" class="nav-link primary">카카오워크</button>
-                  <button type="button" class="nav-link primary">카카오 i 라스</button>
-                </nav>
-              </div>
-              <select name="" id="list_order" class="hidden-select">
-                <option value="1">최신 순</option>
-                <option value="2">최신 순1</option>
-              </select>
-            </div>
-
-
-            <!-- [공통] -리스트 영역 / 브래드 크럼브 존재 .result-list-->
-            <ul class="list-link-wrap result-list" role="navigation">
-              <li>
-                <a href="javascirpt:;" title="이동">
-                  <ol class="breadcrumb-search">
-                    <li>카카오워크</li>
-                    <li>가입</li>
-                  </ol>
-                  <div class="link-container">
-                    <div class="link-bullets">
-                      <i class="icon-question" aria-label="질문"></i>
-                    </div>
-                    <div class="link-title">계정 보호 및 보안 기능에 대해 안내 드립니다.</div>
-                    <div class="link-assistant">
-                      <i class="icon-arrow-right" aria-label="이동"></i>
-                    </div>
-                  </div>
-                  <div class="desc-area">
-                    메시지와 파일 등을 비롯해 카카오워크에서 주고받은 모든 데이터는 카카오가 직접 제공하는 카카오 i 클라우드에 암호화되어 저장됩니다. 사용자가 사용하는 디바이스에는 최소한의 메시지만 저장하여 디바이스 저장을 최소화하고 있습니다.메시지와 파일 등을 비롯해 카카오워크에서 주고받은 모든 데이터는 513122313333333333333333333333333311111aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                  </div>
-                </a>
-              </li>
-            </ul>
-
-            @@include("@@webRoot/html/_include/_pagination.html")
-          </div>
-        </div>
-      </section>
-      <!-- 검색결과 섹션  끝-->
     </main>
     @@include('@@webRoot/html/_include/_footer.html')
   </div>

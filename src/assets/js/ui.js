@@ -274,11 +274,12 @@ var Footer = {
     this.openLayer();
   },
   openLayer: function () {
-    Footer.toggleButtonEls.forEach(button => {
+    this.footerEl.classList.add("openlayer");
+    this.toggleButtonEls.forEach(button => {
       button.addEventListener("click", function (event) {
         event.stopPropagation();
         if (this.classList.contains("opened")) {
-          //이미 클릭되서 클래스를 가질경우
+          //이미 클릭되서 클래스를 가질경우 (this === toggleButtonEls 배열의 버튼 )
           button.classList.remove("opened");
         } else {
           //처음일경우
@@ -290,10 +291,11 @@ var Footer = {
 
 
     window.addEventListener("click", (event) => {
-      Footer.toggleButtonEls.forEach(button => button.classList.remove("opened"));
+      this.toggleButtonEls.forEach(button => button.classList.remove("opened"));
+          console.log(typeof this.toggleButtonEls)
     })
-
   }
+
 }
 
 Gnb.init();

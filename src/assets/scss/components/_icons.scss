@@ -14,8 +14,8 @@ $images : alarm, clear-button, search, comment, declaration, document, question,
     //타이틀 아이콘
     &-title-#{$value}{
       @include mix.bg-url ("icon-title-#{$value}");
-      width:func.rem(48);;
-      height: func.rem(48);
+      width:func.rem(38);;
+      height: func.rem(38);
     }
 
     //sns 아이콘{

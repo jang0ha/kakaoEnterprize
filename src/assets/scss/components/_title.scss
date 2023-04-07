@@ -10,7 +10,10 @@
   margin :0 0 rem(50) 0;
 
   @include res--mobile-up{
-    size: rem(44);
+    font : {
+      size: rem(44);
+    }
+   
     margin :rem(50) 0 rem(100) 0;
   }
 }
@@ -19,7 +22,7 @@
   @include hstack(8);
   margin-bottom: rem(20);
 
-  h2 {
+  h3 {
     font : {
       size: rem(18);
       weight: bold;
@@ -27,7 +30,7 @@
   }
 
   &.required {
-    h2 {
+    h3 {
       position: relative;
 
       &::after {
